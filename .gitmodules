@@ -1,0 +1,12 @@
+[submodule "daily"]
+	path = daily
+	url = git@github.com:pingyen/daily.git
+[submodule "realtime"]
+	path = realtime
+	url = git@github.com:pingyen/realtime.git
+[submodule "food"]
+	path = food
+	url = git@github.com:pingyen/food.git
+[submodule "tool"]
+	path = tool
+	url = git@github.com:pingyen/tool.git
