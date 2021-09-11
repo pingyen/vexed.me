@@ -10,7 +10,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css" rel="stylesheet" >
 <style>
     body {
-        background: #FED361;
+        background: #FFD356;
     }
 
     body > p {
