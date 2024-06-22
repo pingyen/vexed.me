@@ -1,0 +1,15 @@
+name: vexed-me-dev
+
+services:
+  crawler:
+    build:
+      target: dev
+    stdin_open: true
+    tty: true
+  web:
+    build:
+      target: dev
+    ports:
+      - 3000:3000
+    stdin_open: true
+    tty: true
