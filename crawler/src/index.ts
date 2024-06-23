@@ -144,7 +144,7 @@ let browser: Browser | null = null;
 
           return {};
         })();
-       
+      
         const date =
           map.date ??
           jsonLd.datePublished ??
