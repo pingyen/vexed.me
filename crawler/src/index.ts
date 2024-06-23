@@ -1,3 +1,4 @@
+import { curly } from 'node-libcurl';
 import { type Browser } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
@@ -17,7 +18,7 @@ interface Source {
   url: string,
   xmls: SourceXML[],
   timeOffset?: number,
-  useBrowser?: boolean
+  method?: string
 };
 
 const stripCtrlChars = (str: string) => str.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
@@ -39,33 +40,34 @@ let browser: Browser | null = null;
     url: 'redis://redis'
   }).connect();
 
-  const fetchContent = async (url: string, useBrowser: boolean | undefined) => {
-    console.log('fetchContent', `url=${url}`, new Date(), useBrowser === true ? 'useBrowser' : '');
+  const fetchContent = async (url: string, method: string | undefined) => {
+    console.log('fetchContent', `url=${url}`, new Date(), method !== undefined ? method : '');
 
-    if (useBrowser !== true) {
-      return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
+    if (method === 'curl') {
+      const data = (await curly.get(url, { timeout: 10 })).data;
+      return typeof data === 'string' ? data : data.toString();
     }
 
-    const page = await browser!.newPage();
+    if (method === 'browser') {
+      const page = await browser!.newPage();
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+      const content = await page.content();
+      await page.close();
+      return content;
+    }
 
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
-
-    const content = await page.content();
-
-    await page.close();
-
-    return content;
+    return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
   };
 
   const gatherUrls = async () => {
     for (const [key, source] of Object.entries(sources as { [key: string]: Source})) {
       redis.HSET('realtime:sources', key, JSON.stringify({ name: source.name, url: source.url }));
 
-      const useBrowser = source.useBrowser;
+      const method = source.method;
 
       for (const xml of source.xmls) {
         try {
-          const content = fixXML(await fetchContent(xml.url, useBrowser));
+          const content = fixXML(await fetchContent(xml.url, method));
           const dom = new JSDOM(content, { contentType: 'text/xml' });
           const selectors = xml.selectors;
 
@@ -123,7 +125,7 @@ let browser: Browser | null = null;
       const source: Source = sources[key];
 
       try {
-        const content = fixHTML(await fetchContent(url, source.useBrowser));
+        const content = fixHTML(await fetchContent(url, source.method));
         const dom = new JSDOM(content);
         const document = dom.window.document;
 
