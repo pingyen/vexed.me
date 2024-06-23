@@ -141,7 +141,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
         </article>)}
     </main>
     <footer className="m-3">
-      <ol className="[&>li]:inline-block [&>li]:mr-3">
+      <ol className="text-2xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-3">
         {page !== 1 && <>
           <li><Link href="/realtime">第一頁</Link></li>
           <li><Link href={`/realtime/${page - 1}`}>上一頁</Link></li></>}
