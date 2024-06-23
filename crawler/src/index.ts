@@ -1,5 +1,4 @@
 import { curly } from 'node-libcurl';
-import { type Browser } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { createClient } from 'redis';
@@ -33,47 +32,43 @@ const getExpiry = () => Date.now() / 1000 - 1209600; // 86400 * 14
 
 puppeteer.use(StealthPlugin());
 
-let browser: Browser | null = null;
-let browserCount = 0;
+const fetchContent = async (url: string, method: string | undefined) => {
+  console.log('fetchContent', url, new Date(), method !== undefined ? method : '');
+
+  if (method === 'curl') {
+    const data = (await curly.get(url, { timeout: 10 })).data;
+    return typeof data === 'string' ? data : data.toString();
+  }
+
+  if (method === 'browser') {
+    let browser = null;
+
+    try {
+      browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+      const content = await page.content();
+      await page.close();
+      await browser.close();
+      browser = null;
+      return content;
+    } catch (e) {
+      if (browser !== null) {
+        await browser.close();
+        browser = null;
+      }
+
+      throw e;
+    }
+  }
+
+  return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
+};
 
 (async () => {
   const redis = await createClient({
     url: 'redis://redis'
   }).connect();
-
-  const fetchContent = async (url: string, method: string | undefined) => {
-    console.log('fetchContent', url, new Date(), method !== undefined ? method : '');
-
-    if (method === 'curl') {
-      const data = (await curly.get(url, { timeout: 10 })).data;
-      return typeof data === 'string' ? data : data.toString();
-    }
-
-    if (method === 'browser') {
-      if (browserCount === 10) {
-        await browser!.close();
-        browser = await puppeteer.launch();
-        browserCount = 0;
-      }
-
-      ++browserCount;
-
-      const page = await browser!.newPage();
-
-      try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-      } catch (e) {
-        await page.close();
-        throw e;
-      }
-
-      const content = await page.content();
-      await page.close();
-      return content;
-    }
-
-    return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
-  };
 
   const gatherUrls = async () => {
     const expiry = getExpiry();
@@ -250,17 +245,20 @@ let browserCount = 0;
     };
   };
 
-  cron.schedule('9,19,29,39,49,59 * * * *', async () => {
-    if (browser !== null) {
-      return;
-    }
+  cron.schedule('9,19,29,39,49,59 * * * *', (() => {
+    let crawling = false;
 
-    browser = await puppeteer.launch();
-    await gatherUrls();
-    await crawlCandidates();
-    await browser.close();
-    browser = null;
-  });
+    return async () => {
+      if (crawling === true) {
+        return;
+      }
+
+      crawling = true;
+      await gatherUrls();
+      await crawlCandidates();
+      crawling = false;
+    };
+  })());
 
   const expireArticles = async () => {
     const expiry = getExpiry();
