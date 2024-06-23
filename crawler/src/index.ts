@@ -50,7 +50,14 @@ let browser: Browser | null = null;
 
     if (method === 'browser') {
       const page = await browser!.newPage();
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+      } catch (e) {
+        await page.close();
+        throw e;
+      }
+
       const content = await page.content();
       await page.close();
       return content;
