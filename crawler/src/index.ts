@@ -40,7 +40,7 @@ let browser: Browser | null = null;
   }).connect();
 
   const fetchContent = async (url: string, useBrowser: boolean | undefined) => {
-    console.log('fetchContent', `url=${url}`, `useBrowser=${useBrowser}`);
+    console.log('fetchContent', `url=${url}`, new Date(), useBrowser === true ? 'useBrowser' : '');
 
     if (useBrowser !== true) {
       return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
