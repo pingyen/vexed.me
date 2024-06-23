@@ -61,7 +61,7 @@ let browserCount = 0;
       const page = await browser!.newPage();
 
       try {
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
       } catch (e) {
         await page.close();
         throw e;
