@@ -42,7 +42,7 @@ let browserCount = 0;
   }).connect();
 
   const fetchContent = async (url: string, method: string | undefined) => {
-    console.log('fetchContent', `url=${url}`, new Date(), method !== undefined ? method : '');
+    console.log('fetchContent', url, new Date(), method !== undefined ? method : '');
 
     if (method === 'curl') {
       const data = (await curly.get(url, { timeout: 10 })).data;
