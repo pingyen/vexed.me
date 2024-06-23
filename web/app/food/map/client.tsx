@@ -2,34 +2,13 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { APIProvider, Map, AdvancedMarker, useAdvancedMarkerRef, InfoWindow, Pin, type MapCameraProps, type MapCameraChangedEvent } from '@vis.gl/react-google-maps';
-import data from '../data.json';
 import Header from '../header';
-
-const defaultBounds = (() => {
-  let north = -90;
-  let south = 90;
-  let east = -180;
-  let west = 180;
-
-  for (const item of data) {
-    const lat = item.latitude;
-    const lng = item.longitude;
-
-    if (lat > north) {
-      north = lat;
-    } else if (lat < south) {
-      south = lat;
-    }
-
-    if (lng > east) {
-      east = lng;
-    } else if (lng < west) {
-      west = lng;
-    }
-  }
-
-  return { north, south, east, west };
-})();
+interface Item {
+  name: string,
+  description: string,
+  latitude: number;
+  longitude: number;
+}
 
 const Marker = (
   { position, name, description, children } :
@@ -52,10 +31,38 @@ const Marker = (
   );
 };
 
-export default function Client() {
+export default function Client(
+  { data } :
+  { data: Item[] }) {
   const mainRef = useRef<HTMLElement>(null);
   const [camera, setCamera] = useState<MapCameraProps | null>(null);
   const [current, setCurrent] = useState<google.maps.LatLngLiteral | null>(null);
+
+  const defaultBounds = (() => {
+    let north = -90;
+    let south = 90;
+    let east = -180;
+    let west = 180;
+
+    for (const item of data) {
+      const lat = item.latitude;
+      const lng = item.longitude;
+
+      if (lat > north) {
+        north = lat;
+      } else if (lat < south) {
+        south = lat;
+      }
+
+      if (lng > east) {
+        east = lng;
+      } else if (lng < west) {
+        west = lng;
+      }
+    }
+
+    return { north, south, east, west };
+  })();
 
   useEffect(() => {
     const current = mainRef.current as HTMLElement;
