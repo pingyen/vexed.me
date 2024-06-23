@@ -76,6 +76,8 @@ let browserCount = 0;
   };
 
   const gatherUrls = async () => {
+    const expiry = getExpiry();
+
     for (const [key, source] of Object.entries(sources as { [key: string]: Source})) {
       redis.HSET('realtime:sources', key, JSON.stringify({ name: source.name, url: source.url }));
 
@@ -109,15 +111,29 @@ let browserCount = 0;
                 return;
               }
 
-              const map: { [key: string]: string | undefined } = {
-                source: key
-              };
+              const date = node.querySelector(selectors.date)?.textContent;
 
-              const selector = selectors.date;
-
-              if (selector !== undefined) {
-                map.date = node.querySelector(selectors.date)?.textContent ?? undefined;
+              if (typeof date !== 'string') {
+                console.warn("typeof date !== 'string'", key, xml, url);
+                return;
               }
+
+              const timestamp = Date.parse(date) / 1000;
+
+              if (isNaN(timestamp) === true) {
+                console.warn('isNaN(timestamp) === true', key, xml, url, date);
+                return;
+              }
+
+              if (expiry > timestamp) {
+                /* console.warn('expiry > timestamp', key, xml, url, date); */
+                return;
+              }
+
+              const map: { source: string, timestamp: number } = {
+                source: key,
+                timestamp
+              };
 
               redis.HSET('realtime:candidates', textContent, JSON.stringify(map));
              } catch (e) {
@@ -164,21 +180,21 @@ let browserCount = 0;
         })();
      
         const date =
-          map.date ??
           jsonLd.datePublished ??
           document.querySelector('meta[itemprop="datePublished"], meta[property="article:published_time"], meta[name="pubdate"], meta[name="date"]')?.getAttribute('content') ??
           undefined;
 
+        let timestamp;
+
         if (date === undefined) {
-          console.warn('date === undefined', url, map, document.querySelector('title')?.textContent);
-          continue;
-        }
+          timestamp = map.timestamp;
+        } else {
+          timestamp = Date.parse(date) / 1000;
 
-        let timestamp = Date.parse(date) / 1000;
-
-        if (isNaN(timestamp) === true) {
-          console.warn('isNaN(timestamp) === true', url, map, date);
-          continue;
+          if (isNaN(timestamp) === true) {
+            console.warn('isNaN(timestamp) === true', url, map, date);
+            continue;
+          }
         }
 
         const timeOffset = source.timeOffset;
@@ -188,7 +204,7 @@ let browserCount = 0;
         }
 
         if (expiry > timestamp) {
-          console.warn('expiry > timestamp', url, map, date);
+          /* console.warn('expiry > timestamp', url, map, date); */
           continue;
         }
 

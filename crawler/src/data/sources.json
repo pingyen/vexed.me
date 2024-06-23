@@ -24,7 +24,8 @@
         "url": "https://udn.com/sitemap/gnews_contents/2/1",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/story/"
@@ -34,7 +35,8 @@
         "url": "https://udn.com/sitemap/gnews_contents/2/2",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/story/"
@@ -78,7 +80,8 @@
         "url": "https://www.chinatimes.com/sitemaps/sitemap_todaynews.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/realtimenews/",
@@ -98,7 +101,8 @@
         "url": "https://www.ctee.com.tw/sitemaps/sitemap_newstoday.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -150,7 +154,8 @@
         "url": "https://www.cna.com.tw/sitemap_fromremote_cfp.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "lastmod"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -166,7 +171,8 @@
         "url": "https://www.upmedia.mg/sitemap_news_0504.php",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news_info.php"
@@ -184,7 +190,8 @@
         "url": "https://www.ettoday.net/news-sitemap.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -194,7 +201,8 @@
         "url": "https://finance.ettoday.net/news-sitemap.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -210,7 +218,8 @@
         "url": "https://www.setn.com/sitemap.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "lastmod"
         },
         "pathnamePrefixes": [
           "/News.aspx"
@@ -227,7 +236,8 @@
         "url": "https://www.nownews.com/newsSitemap-daily.xml",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -243,7 +253,8 @@
         "url": "https://www.mirrormedia.mg/rss/rss.xml",
         "selectors": {
           "root": "item",
-          "url": "link"
+          "url": "link",
+          "date": "pubDate"
         },
         "pathnamePrefixes": [
           "/story/"
@@ -259,7 +270,8 @@
         "url": "https://newtalk.tw/rss/all",
         "selectors": {
           "root": "item",
-          "url": "link"
+          "url": "link",
+          "date": "pubDate"
         },
         "pathnamePrefixes": [
           "/news/view/"
@@ -275,7 +287,8 @@
         "url": "https://news.pts.org.tw/xml/newsfeed.xml",
         "selectors": {
           "root": "item",
-          "url": "link"
+          "url": "link",
+          "date": "pubDate"
         },
         "pathnamePrefixes": [
           "/article/"
@@ -291,7 +304,8 @@
         "url": "https://cn.nytimes.com/rss/zh-hant/",
         "selectors": {
           "root": "item",
-          "url": "link"
+          "url": "link",
+          "date": "pubDate"
         },
         "pathnamePrefixes": [
           "/"
@@ -398,7 +412,8 @@
         "url": "https://www.ttv.com.tw/rss/RSSHandler.ashx?d=news",
         "selectors": {
           "root": "item",
-          "url": "link"
+          "url": "link",
+          "date": "pubDate"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -414,7 +429,8 @@
         "url": "https://news.tvbs.com.tw/crontab/sitemap/latest",
         "selectors": {
           "root": "url",
-          "url": "loc"
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/"
