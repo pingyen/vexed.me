@@ -48,7 +48,7 @@ let browser: Browser | null = null;
 
     const page = await browser!.newPage();
 
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
 
     const content = await page.content();
 
