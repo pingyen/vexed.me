@@ -44,7 +44,7 @@ export default function Client() {
     } else {
       chunks = ratio.split(':');
     }
-     
+    
     const a = Number(chunks[0]);
     const b = Number(chunks[1]);
     const c = Math.sqrt(a * a + b * b);
