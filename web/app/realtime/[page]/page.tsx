@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
       delete article.image;
 
     article.title = cleanTitle(source, article.title);
-    article.source = sources.get(article.source);
+    article.source = sources.get(source);
 
     article.url = url;
     articles.push(article);
