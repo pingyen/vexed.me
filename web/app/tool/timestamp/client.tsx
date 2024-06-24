@@ -47,7 +47,8 @@ export default function Client() {
       return;
     }
 
-    if (timezone === 'utc') {
+    if (timezone === 'utc' &&
+        /^\d{4}-\d{2}-\d{2}$/.test(value) === false) {
       ms += timeOffset;
     }
 
