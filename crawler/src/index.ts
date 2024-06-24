@@ -28,7 +28,7 @@ const fixJsonLd = (jsonLd: string) => stripCtrlChars(jsonLd);
 
 const fixHTML = (html: string) => html.replace(/<style[^>]*?>[\s\S]*?<\/style[^>]*?>/gim, '');
 
-const getExpiry = () => Date.now() / 1000 - 1209600; // 86400 * 14
+const getExpiry = () => Date.now() / 1000 - 1296000; // 86400 * 15
 
 puppeteer.use(StealthPlugin());
 
