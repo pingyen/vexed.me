@@ -199,6 +199,12 @@ const fetchContent = async (url: string, method: string | undefined) => {
           continue;
         }
 
+        if (timestamp > Date.now() / 1000) {
+          console.warn('timestamp > Date.now() / 1000', url, map, date);
+          redis.HDEL('realtime:candidates', url);
+          continue;
+        }
+
         const title =
           jsonLd.headline ??
           document.querySelector('meta[property="og:title"]')?.getAttribute('content') ??
