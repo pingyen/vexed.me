@@ -71,6 +71,8 @@ const fetchContent = async (url: string, method: string | undefined) => {
   }).connect();
 
   const gatherUrls = async () => {
+    console.log('gatherUrls() start', new Date());
+
     const expiry = getExpiry();
 
     for (const [key, source] of Object.entries(sources as { [key: string]: Source})) {
@@ -140,9 +142,13 @@ const fetchContent = async (url: string, method: string | undefined) => {
         }
       };
     }
+
+    console.log('gatherUrls() end', new Date());
   };
 
   const crawlCandidates = async () => {
+    console.log('crawlCandidates() start', new Date());
+
     const candidates = await redis.HGETALL('realtime:candidates');
     const expiry = getExpiry();
 
@@ -253,6 +259,8 @@ const fetchContent = async (url: string, method: string | undefined) => {
         console.warn(e, url, map);
       }
     };
+
+    console.log('crawlCandidates() end', new Date());
   };
 
   cron.schedule('9,19,29,39,49,59 * * * *', (() => {
@@ -271,13 +279,21 @@ const fetchContent = async (url: string, method: string | undefined) => {
   })());
 
   const expireArticles = async () => {
+    console.log('expireArticles() start', new Date());
+
     const expiry = getExpiry();
     const urls = await redis.ZRANGE('realtime:pages', '-inf', expiry, { BY: 'SCORE' });
 
+    const promises = [];
+
     for (const url of urls) {
-      redis.ZREM('realtime:pages', url);
-      redis.DEL(`realtime:article:${url}`);
+      promises.push(redis.ZREM('realtime:pages', url));
+      promises.push(redis.DEL(`realtime:article:${url}`));
     }
+
+    await Promise.all(promises);
+
+    console.log('expireArticles() end', new Date());
   };
 
   cron.schedule('30 5,13,21 * * *', expireArticles);
