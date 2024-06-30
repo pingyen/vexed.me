@@ -12,6 +12,8 @@ services:
       - 443:443
     environment:
       - DOMAIN=vexed.me
+    networks:
+      frontend:
     restart: unless-stopped
   certbot:
     image: certbot/certbot
@@ -19,12 +21,17 @@ services:
       - ../../certbot/www/:/var/www/certbot:rw
       - ../../certbot/letsencrypt/:/etc/letsencrypt:rw
   redis:
+    networks:
+      backend:
+        ipv4_address: 172.16.1.168
     restart: unless-stopped
   crawler:
     build:
       target: prod
     volumes:
       - crawler_node_modules:/app/node_modules
+    networks:
+      backend:
     restart: unless-stopped
   web:
     build:
@@ -32,9 +39,25 @@ services:
     volumes:
       - web_node_modules:/app/node_modules
       - web_next:/app/.next
+    networks:
+      frontend:
+        ipv4_address: 172.16.0.168
+      backend:
     restart: unless-stopped
 
 volumes:
   crawler_node_modules:
   web_node_modules:
   web_next:
+
+networks:
+  frontend:
+    ipam:
+      config:
+        - subnet: 172.16.0.0/24
+          gateway: 172.16.0.254
+  backend:
+    ipam:
+      config:
+        - subnet: 172.16.1.0/24
+          gateway: 172.16.1.254
