@@ -143,7 +143,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
             <a href={source.url} target="_blank">{source.name}</a>
             <Time timestamp={timestamp} />
           </p>
-          <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab]" href={url} target="_blank">{title}</a></h2>
+          <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
           {image !== undefined &&
             <Img src={image} alt={title} />}
           {description !== undefined &&
