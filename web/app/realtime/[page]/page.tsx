@@ -13,36 +13,16 @@ export const metadata: Metadata = {
 
 const size = 100;
 
-const cleanTitle = (source: string, title: string) => {
-  switch (source) {
-    case 'upmedia':
-      return title.endsWith('--上報') === true ?
-        title.substring(0, title.length - 4) :
-        title;
-    case 'tvbs':
-      return title.endsWith('│TVBS新聞網') === true ?
-        title.substring(0, title.length - 8) :
-        title;
-    case 'mirrormedia':
-      return title.endsWith(' - 鏡週刊 Mirror Media') === true ?
-        title.substring(0, title.length - 19) :
-        title;
-    case 'nextapple':
-      return title.endsWith('｜壹蘋新聞網') === true ?
-        title.substring(0, title.length - 6) :
-        title;
-    default:
-      return title;
-  }
-};
-
 export default async function Page({ params }: { params: { page?: string } }) {
-  const [redis, ignoreImages] = await Promise.all([
+  const [redis, ignoreImages, titleEndings] = await Promise.all([
     createClient({
       url: 'redis://redis'
     }).connect(),
     new Promise<Set<string>>(async resolve => {
       resolve(new Set(JSON.parse(await readFile('./app/realtime/[page]/ignoreImages.json', 'utf8'))));
+    }),
+    new Promise<Map<string, string>>(async resolve => {
+      resolve(new Map(Object.entries(JSON.parse(await readFile('./app/realtime/[page]/titleEndings.json', 'utf8')))));
     })
   ]);
 
@@ -111,6 +91,20 @@ export default async function Page({ params }: { params: { page?: string } }) {
   const stop = page * size - 1;
   const urls = await redis.ZRANGE('realtime:pages', start, stop, { REV: true });
   const articles = [];
+
+  const cleanTitle = (source: string, title: string) => {
+    const ending = titleEndings.get(source);
+
+    if (ending === undefined) {
+      return title;
+    }
+
+    if (title.endsWith(ending) === true) {
+      return title.substring(0, title.length - ending.length);
+    }
+
+    return title;
+  };
 
   for (const url of urls) {
     const article = JSON.parse(await redis.GET(`realtime:article:${url}`) as string);
