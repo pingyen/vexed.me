@@ -11,7 +11,7 @@ export default function Img({ src, alt }: { src: string, alt: string }) {
     const img = new Image();
 
     img.addEventListener('load', () => {
-      current.className = 'block my-2 w-full max-w-sm max-h-sm';
+      current.className = 'block my-2 w-full max-w-sm';
       current.src = src;
     });
 
