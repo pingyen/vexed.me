@@ -26,4 +26,4 @@ COPY package.json .
 
 RUN npm i
 
-CMD ["bash", "-c", "npm run build && npm run start"]
+CMD ["npm", "run", "start"]
