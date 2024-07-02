@@ -1,4 +1,4 @@
-FROM ghcr.io/puppeteer/puppeteer as base
+FROM ghcr.io/puppeteer/puppeteer AS base
 
 ENV TINI_VERSION v0.19.0
 
@@ -20,7 +20,7 @@ FROM base AS dev
 CMD ["bash"]
 
 
-FROM base as prod
+FROM base AS prod
 
 COPY package.json .
 
