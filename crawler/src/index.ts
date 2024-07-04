@@ -1,3 +1,4 @@
+import { type Browser } from 'puppeteer';
 import puppeteer from 'puppeteer-extra';
 import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 import { createClient } from 'redis';
@@ -29,9 +30,9 @@ const fixHTML = (html: string) => html.replace(/<style[^>]*?>[\s\S]*?<\/style[^>
 
 const getExpiry = () => Date.now() / 1000 - 1209600; // 86400 * 14
 
-const crawlings = new Set();
-
 puppeteer.use(StealthPlugin());
+
+let browser: Browser | null = null;
 
 (async () => {
   const redis = await createClient({
@@ -45,15 +46,13 @@ puppeteer.use(StealthPlugin());
       return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
     }
 
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
+    const page = await browser!.newPage();
 
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     const content = await page.content();
 
     await page.close();
-    await browser.close();
 
     return content;
   };
@@ -87,9 +86,8 @@ puppeteer.use(StealthPlugin());
                 return;
               }
 
-              if (await redis.EXISTS(`realtime:article:${textContent}`) > 0 ||
-                  /* await redis.HEXISTS('realtime:candidates', textContent) === true || */
-                  crawlings.has(textContent) === true) {
+              if (await redis.EXISTS(`realtime:article:${textContent}`) > 0 /*||
+                  /* await redis.HEXISTS('realtime:candidates', textContent) === true || */) {
                 return;
               }
 
@@ -120,12 +118,6 @@ puppeteer.use(StealthPlugin());
     const expiry = getExpiry();
 
     for (const [url, json] of Object.entries(candidates)) {
-      if (crawlings.has(url) === true) {
-        continue;
-      }
-
-      crawlings.add(url);
-
       const map = JSON.parse(json);
       const key: keyof typeof sources = map.source;
       const source: Source = sources[key];
@@ -161,7 +153,6 @@ puppeteer.use(StealthPlugin());
 
         if (date === undefined) {
           console.warn('date === undefined', url, map, document.querySelector('title')?.textContent);
-          crawlings.delete(url);
           continue;
         }
 
@@ -169,7 +160,6 @@ puppeteer.use(StealthPlugin());
 
         if (isNaN(timestamp) === true) {
           console.warn('isNaN(timestamp) === true', url, map, date);
-          crawlings.delete(url);
           continue;
         }
 
@@ -181,7 +171,6 @@ puppeteer.use(StealthPlugin());
 
         if (expiry > timestamp) {
           console.warn('expiry > timestamp', url, map, date);
-          crawlings.delete(url);
           continue;
         }
 
@@ -192,7 +181,6 @@ puppeteer.use(StealthPlugin());
 
         if (title === undefined) {
           console.warn('title === undefined', url, map);
-          crawlings.delete(url);
           continue;
         }
 
@@ -221,13 +209,22 @@ puppeteer.use(StealthPlugin());
         });
 
         redis.HDEL('realtime:candidates', url);
-        crawlings.delete(url);
       } catch (e) {
         console.warn(e, url, map);
-        crawlings.delete(url);
       }
     };
   };
+
+  cron.schedule('9,19,29,39,49,59 * * * *', async () => {
+    if (browser !== null) {
+      return;
+    }
+
+    browser = await puppeteer.launch();
+    await gatherUrls();
+    await crawlCandidates();
+    browser = null;
+  });
 
   const expireArticles = async () => {
     const expiry = getExpiry();
@@ -239,7 +236,5 @@ puppeteer.use(StealthPlugin());
     }
   };
 
-  cron.schedule('3,18,38,53 * * * *', gatherUrls);
-  cron.schedule('8,23,43,58 * * * *', crawlCandidates);
   cron.schedule('30 5,13,21 * * *', expireArticles);
 })();
