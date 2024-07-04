@@ -205,6 +205,7 @@ let browserCount = 0;
 
         if (expiry > timestamp) {
           /* console.warn('expiry > timestamp', url, map, date); */
+          redis.HDEL('realtime:candidates', url);
           continue;
         }
 
