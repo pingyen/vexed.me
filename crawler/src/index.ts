@@ -1,6 +1,5 @@
 import { curly } from 'node-libcurl';
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { spawn } from 'child_process';
 import { createClient } from 'redis';
 import { JSDOM } from 'jsdom';
 import cron from 'node-cron';
@@ -30,7 +29,8 @@ const fixHTML = (html: string) => html.replace(/<style[^>]*?>[\s\S]*?<\/style[^>
 
 const getExpiry = () => Date.now() / 1000 - 1296000; // 86400 * 15
 
-puppeteer.use(StealthPlugin());
+const puppeteerCmd = process.argv[0];
+const puppeteerPath = `${__dirname}/puppeteer`;
 
 const fetchContent = async (url: string, method: string | undefined) => {
   console.log('fetchContent', url, method !== undefined ? method : '');
@@ -41,46 +41,22 @@ const fetchContent = async (url: string, method: string | undefined) => {
   }
 
   if (method === 'browser') {
-    const browser = await puppeteer.launch();
+    return await new Promise((resolve, reject) => {
+      const outs: string[] = [];
+      const errs: string[] = [];
+      const proc = spawn(puppeteerCmd, [puppeteerPath, url]);
 
-    try {
-      const page = await browser.newPage();
+      proc.stdout.on('data', data => { outs.push(data); });
+      proc.stderr.on('data', data => { errs.push(data); });
 
-      try {
-        await page.setRequestInterception(true);
+      proc.on('exit', function () {
+        errs.length > 0 ?
+          reject(errs.join('\n')) :
+          resolve(outs.join(''));
 
-        page.on('request', req => {
-          switch (req.resourceType()) {
-            case 'font':
-            case 'image':
-            case 'manifest':
-            case 'media':
-            case 'stylesheet':
-              req.abort();
-              return;
-            case 'document':
-              if (req.url().startsWith('https://www.youtube.com/embed/') === true) {
-                req.abort();
-                return;
-              }
-          }
-
-          req.continue();
-        });
-
-        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-        return await page.content();
-      } finally {
-        await page.close();
-      }
-    } finally {
-      try {
-        await browser.close();
-      } catch (e) {
-        console.warn(e, url, method);
-        browser.process()!.kill(9);
-      }
-    }
+        proc.kill();
+      });
+    });
   }
 
   return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
