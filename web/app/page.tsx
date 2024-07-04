@@ -16,7 +16,7 @@ export default function Page() {
       [&>ul>li>a:first-letter]:text-5xl [&>ul>li>a:first-letter]:font-bold
       [&>ul>li>a:hover]:text-red-700">
       <p>
-        <Image src="/Vexed.png" width="480" height="480" alt="Vexed" className="w-full max-w-[480px]"/>
+        <Image src="/Vexed.png" width="480" height="480" alt="Vexed" priority className="w-full max-w-[480px]"/>
       </p>
       <ul>
           <li><a href="/realtime" target="_blank">Taiwan Realtime News</a></li>
