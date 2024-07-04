@@ -8,7 +8,7 @@ export default function Client() {
   const [output, setOutput] = useState('');
 
   const inputInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/([^12347]) /g, '$1=');
+    const value = e.target.value.replace(/([^12347]) /g, '$1=').replace(/,/g, '%2C');
     const current = outputRef.current as HTMLInputElement;
 
     if (value.trim() === '') {
