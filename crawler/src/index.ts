@@ -232,6 +232,7 @@ let browser: Browser | null = null;
     browser = await puppeteer.launch();
     await gatherUrls();
     await crawlCandidates();
+    await browser.close();
     browser = null;
   });
 
