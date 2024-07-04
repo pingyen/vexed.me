@@ -173,7 +173,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
 
           return {};
         })();
-     
+
         const date =
           jsonLd.datePublished ??
           document.querySelector('meta[itemprop="datePublished"], meta[property="article:published_time"], meta[name="pubdate"], meta[name="date"]')?.getAttribute('content') ??
