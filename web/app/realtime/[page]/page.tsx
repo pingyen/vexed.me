@@ -41,7 +41,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
     createClient({
       url: 'redis://redis'
     }).connect(),
-    new Promise(async resolve => {
+    new Promise<Set<string>>(async resolve => {
       resolve(new Set(JSON.parse(await readFile('./app/realtime/[page]/ignoreImages.json', 'utf8'))));
     })
   ]);
