@@ -17,7 +17,9 @@ const ignoreImages = new Set([
   'https://money.udn.com/static/img/moneyudn.jpg',
   'https://uc.udn.com.tw/upf/2015_money/SSI/ednvip/default_logo/logo_1280.png',
   'https://static.chinatimes.com/images/2020/logo-chinatimes-250x250.png',
-  'https://www.cna.com.tw/img/pic_fb.jpg'
+  'https://www.cna.com.tw/img/pic_fb.jpg',
+  'https://news.ltn.com.tw/assets/images/all/250_ltn.png',
+  'https://ec.ltn.com.tw/assets/images/default.jpg'
 ]);
 
 const cleanTitle = (source: string, title: string) => {
