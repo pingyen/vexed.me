@@ -80,7 +80,7 @@ sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml up -d
 sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml down
 ```
 
-### Build While Running
+### Build while Running
 
 ```
 sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml exec web npm run build
