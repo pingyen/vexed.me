@@ -1,0 +1,425 @@
+{
+  "twreporter": {
+    "name": "報導者",
+    "url": "https://www.twreporter.org",
+    "xmls": [
+      {
+        "url": "https://public.twreporter.org/rss/twreporter-rss.xml",
+        "selectors": {
+          "root": "item",
+          "url": "link",
+          "date": "pubDate"
+        },
+        "pathnamePrefixes": [
+          "/a/"
+        ]
+      }
+    ]
+  },
+  "udn": {
+    "name": "聯合報",
+    "url": "https://udn.com",
+    "xmls": [
+      {
+        "url": "https://udn.com/sitemap/gnews_contents/2/1",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/story/"
+        ]
+      },
+      {
+        "url": "https://udn.com/sitemap/gnews_contents/2/2",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/story/"
+        ]
+      }
+    ]
+  },
+  "money-udn": {
+    "name": "經濟日報",
+    "url": "https://money.udn.com",
+    "xmls": [
+      {
+        "url": "https://money.udn.com/sitemap/news_contents/1001/1",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/money/story/"
+        ]
+      },
+      {
+        "url": "https://money.udn.com/sitemap/news_contents/1001/2",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/money/story/"
+        ]
+      }
+    ]
+  },
+  "chinatimes": {
+    "name": "中國時報",
+    "url": "https://www.chinatimes.com",
+    "xmls": [
+      {
+        "url": "https://www.chinatimes.com/sitemaps/sitemap_todaynews.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/realtimenews/",
+          "/hottopic/",
+          "/opinion/",
+          "/campus/"
+        ]
+      }
+    ],
+    "useBrowser": true
+  },
+  "ctee": {
+    "name": "工商時報",
+    "url": "https://www.ctee.com.tw",
+    "xmls": [
+      {
+        "url": "https://www.ctee.com.tw/sitemaps/sitemap_newstoday.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ],
+    "timeOffset": -28800,
+    "useBrowser": true
+  },
+  "ltn": {
+    "name": "自由時報",
+    "url": "https://news.ltn.com.tw",
+    "xmls": [
+      {
+        "url": "https://news.ltn.com.tw/sitemap.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ]
+  },
+  "nextapple": {
+    "name": "壹蘋新聞網",
+    "url": "https://tw.nextapple.com",
+    "xmls": [
+      {
+        "url": "https://tw.nextapple.com/api/xml/site-map/news",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/"
+        ]
+      }
+    ]
+  },
+  "cna": {
+    "name": "中央社",
+    "url": "https://www.cna.com.tw",
+    "xmls": [
+      {
+        "url": "https://www.cna.com.tw/sitemap_fromremote_cfp.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ]
+  },
+  "upmedia": {
+    "name": "上報",
+    "url": "https://www.upmedia.mg",
+    "xmls": [
+      {
+        "url": "https://www.upmedia.mg/sitemap_news_0504.php",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news_info.php"
+        ]
+      }
+    ],
+    "timeOffset": -28800,
+    "useBrowser": true
+  },
+  "ettoday": {
+    "name": "ETtoday",
+    "url": "https://www.ettoday.net",
+    "xmls": [
+      {
+        "url": "https://www.ettoday.net/news-sitemap.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      },
+      {
+        "url": "https://finance.ettoday.net/news-sitemap.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ]
+  },
+  "setn": {
+    "name": "三立新聞",
+    "url": "https://www.setn.com",
+    "xmls": [
+      {
+        "url": "https://www.setn.com/sitemap.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/News.aspx"
+        ]
+      }
+    ],
+    "timeOffset": -28800
+  },
+  "nownews": {
+    "name": "NOWnews",
+    "url": "https://www.nownews.com",
+    "xmls": [
+      {
+        "url": "https://www.nownews.com/newsSitemap-daily.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ]
+  },
+  "mirrormedia": {
+    "name": "鏡週刊",
+    "url": "https://www.mirrormedia.mg",
+    "xmls": [
+      {
+        "url": "https://www.mirrormedia.mg/rss/rss.xml",
+        "selectors": {
+          "root": "item",
+          "url": "link"
+        },
+        "pathnamePrefixes": [
+          "/story/"
+        ]
+      }
+    ]
+  },
+  "newtalk": {
+    "name": "Newtalk",
+    "url": "https://newtalk.tw",
+    "xmls": [
+      {
+        "url": "https://newtalk.tw/rss/all",
+        "selectors": {
+          "root": "item",
+          "url": "link"
+        },
+        "pathnamePrefixes": [
+          "/news/view/"
+        ]
+      }
+    ]
+  },
+  "pts": {
+    "name": "公視",
+    "url": "https://news.pts.org.tw",
+    "xmls": [
+      {
+        "url": "https://news.pts.org.tw/xml/newsfeed.xml",
+        "selectors": {
+          "root": "item",
+          "url": "link"
+        },
+        "pathnamePrefixes": [
+          "/article/"
+        ]
+      }
+    ]
+  },
+  "nytimes": {
+    "name": "紐約時報",
+    "url": "https://cn.nytimes.com",
+    "xmls": [
+      {
+        "url": "https://cn.nytimes.com/rss/zh-hant/",
+        "selectors": {
+          "root": "item",
+          "url": "link"
+        },
+        "pathnamePrefixes": [
+          "/"
+        ]
+      }
+    ]
+  },
+  "storm": {
+    "name": "風傳媒",
+    "url": "https://www.storm.mg",
+    "xmls": [
+      {
+        "url": "https://feeds.storm.mg/general/storm/cid?id=117",
+        "selectors": {
+          "root": "item",
+          "url": "link",
+          "date": "pubDate"
+        },
+        "pathnamePrefixes": [
+          "/article/"
+        ]
+      },
+      {
+        "url": "https://feeds.storm.mg/general/storm/cid?id=118",
+        "selectors": {
+          "root": "item",
+          "url": "link",
+          "date": "pubDate"
+        },
+        "pathnamePrefixes": [
+          "/article/"
+        ]
+      },
+      {
+        "url": "https://feeds.storm.mg/general/storm/cid?id=121",
+        "selectors": {
+          "root": "item",
+          "url": "link",
+          "date": "pubDate"
+        },
+        "pathnamePrefixes": [
+          "/article/"
+        ]
+      },
+      {
+        "url": "https://feeds.storm.mg/general/storm/cid?id=22172",
+        "selectors": {
+          "root": "item",
+          "url": "link",
+          "date": "pubDate"
+        },
+        "pathnamePrefixes": [
+          "/article/",
+          "/lifestyle/"
+        ]
+      }
+    ]
+  },
+  "bbc": {
+    "name": "BBC 中文網",
+    "url": "https://www.bbc.com/zhongwen/trad",
+    "xmls": [
+      {
+        "url": "https://www.bbc.com/sitemaps/https-sitemap-com-news-1.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/zhongwen/trad/"
+        ]
+      },
+      {
+        "url": "https://www.bbc.com/sitemaps/https-sitemap-com-news-2.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/zhongwen/trad/"
+        ]
+      },
+      {
+        "url": "https://www.bbc.com/sitemaps/https-sitemap-com-news-3.xml",
+        "selectors": {
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
+        },
+        "pathnamePrefixes": [
+          "/zhongwen/trad/"
+        ]
+      }
+    ],
+    "useBrowser": true
+  },
+  "ttv": {
+    "name": "台視新聞",
+    "url": "https://news.ttv.com.tw",
+    "xmls": [
+      {
+        "url": "https://www.ttv.com.tw/rss/RSSHandler.ashx?d=news",
+        "selectors": {
+          "root": "item",
+          "url": "link"
+        },
+        "pathnamePrefixes": [
+          "/news/"
+        ]
+      }
+    ]
+  },
+  "tvbs": {
+    "name": "TVBS",
+    "url": "https://news.tvbs.com.tw",
+    "xmls": [
+      {
+        "url": "https://news.tvbs.com.tw/crontab/sitemap/latest",
+        "selectors": {
+          "root": "url",
+          "url": "loc"
+        },
+        "pathnamePrefixes": [
+          "/"
+        ]
+      }
+    ]
+  }
+}

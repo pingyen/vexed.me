@@ -1,0 +1,27 @@
+services:
+  redis:
+    image: redis
+    volumes:
+      - ../../redis/data:/data
+  crawler:
+    build:
+      context: ../../crawler
+      dockerfile: ../docker/crawler/Dockerfile
+      platforms:
+        - linux/amd64
+    volumes:
+      - ../../crawler:/app
+    cap_add:
+      - SYS_ADMIN
+    depends_on:
+      - redis
+  web:
+    build:
+      context: ../../web
+      dockerfile: ../docker/web/Dockerfile
+      platforms:
+        - linux/amd64
+    volumes:
+      - ../../web:/app
+    depends_on:
+      - redis
