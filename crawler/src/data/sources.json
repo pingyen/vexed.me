@@ -88,7 +88,7 @@
         ]
       }
     ],
-    "useBrowser": true
+    "method": "browser"
   },
   "ctee": {
     "name": "工商時報",
@@ -106,7 +106,7 @@
       }
     ],
     "timeOffset": -28800,
-    "useBrowser": true
+    "method": "browser"
   },
   "ltn": {
     "name": "自由時報",
@@ -174,7 +174,7 @@
       }
     ],
     "timeOffset": -28800,
-    "useBrowser": true
+    "method": "curl"
   },
   "ettoday": {
     "name": "ETtoday",
@@ -388,7 +388,7 @@
         ]
       }
     ],
-    "useBrowser": true
+    "method": "curl"
   },
   "ttv": {
     "name": "台視新聞",

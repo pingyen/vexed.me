@@ -2,6 +2,7 @@
   "dependencies": {
     "jsdom": "^24.1.0",
     "node-cron": "^3.0.3",
+    "node-libcurl": "^4.0.0",
     "puppeteer": "^22.12.0",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
