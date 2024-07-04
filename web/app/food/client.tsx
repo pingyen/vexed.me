@@ -1,8 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import data from './data.json';
 import Header from './header';
+
+interface Item {
+  name: string,
+  description: string,
+  latitude: number;
+  longitude: number;
+  distance?: number
+}
 
 enum SortState {
   UNSORTED = 0,
@@ -10,11 +17,11 @@ enum SortState {
   SORTED = 2
 }
 
-const distances = new Map();
-
-export default function Client() {
+export default function Client(
+  { data } :
+  { data: Item[] }) {
   const [items, setItems] = useState(data);
-  const [sortState, setSortState] = useState(distances.size > 0 ? SortState.SORTED : SortState.UNSORTED);
+  const [sortState, setSortState] = useState(items[0]?.distance !== undefined ? SortState.SORTED : SortState.UNSORTED);
 
   useEffect(() => {
     if (sortState !== SortState.SORTING) {
@@ -35,17 +42,17 @@ export default function Client() {
         const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat)) * Math.cos(deg2rad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        distances.set(item, c *  6371); // KM
+        item.distance = c *  6371; // KM
       });
 
-      data.sort((a, b) => distances.get(a) - distances.get(b));
+      data.sort((a, b) => a.distance as number - (b.distance as number));
       setItems(data.slice());
       setSortState(SortState.SORTED);
     }, () => {
       alert('請給予位置權限');
       setSortState(SortState.UNSORTED);
     });
-  }, [sortState]);
+  }, [data, sortState]);
 
   return <>
     <Header button={sortState === SortState.UNSORTED ? { click: () => { setSortState(SortState.SORTING) }, text: '以距離排序' } : undefined} />
