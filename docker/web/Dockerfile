@@ -12,6 +12,9 @@ CMD ["bash"]
 
 FROM base as prod
 
+RUN mkdir /app/.next
+RUN chown node:node /app/.next
+
 COPY package.json .
 
 RUN npm i
