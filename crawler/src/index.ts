@@ -174,33 +174,37 @@ const fetchContent = async (url: string, method: string | undefined) => {
           document.querySelector('meta[itemprop="datePublished"], meta[property="article:published_time"], meta[name="pubdate"], meta[name="date"]')?.getAttribute('content') ??
           undefined;
 
-        let timestamp: number;
+        const now = Date.now() / 1000;
 
-        if (date === undefined) {
-          timestamp = map.timestamp;
-        } else {
-          timestamp = Date.parse(date) / 1000;
+        const timestamp = (() => {
+          if (date === undefined) {
+            return map.timestamp;
+          }
+
+          let timestamp = Date.parse(date);
 
           if (isNaN(timestamp) === true) {
-            console.warn('isNaN(timestamp) === true', url, map, date);
-            continue;
+            return map.timestamp;
           }
-        }
 
-        const timeOffset = source.timeOffset;
+          timestamp /= 1000;
 
-        if (timeOffset !== undefined) {
-          timestamp += timeOffset;
-        }
+          const timeOffset = source.timeOffset;
 
-        if (expiry > timestamp) {
-          /* console.warn('expiry > timestamp', url, map, date); */
-          redis.HDEL('realtime:candidates', url);
-          continue;
-        }
+          if (timeOffset !== undefined) {
+            timestamp += timeOffset;
+          }
 
-        if (timestamp > Date.now() / 1000) {
-          console.warn('timestamp > Date.now() / 1000', url, map, date);
+          if (timestamp > now ||
+              timestamp < expiry) {
+            return map.timestamp;
+          }
+
+          return timestamp;
+        })();
+
+        if (timestamp > now) {
+          console.warn('timestamp > now', url, map, date);
           redis.HDEL('realtime:candidates', url);
           continue;
         }
