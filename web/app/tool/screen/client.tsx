@@ -44,7 +44,7 @@ export default function Client() {
     } else {
       chunks = ratio.split(':');
     }
-      
+     
     const a = Number(chunks[0]);
     const b = Number(chunks[1]);
     const c = Math.sqrt(a * a + b * b);
@@ -63,7 +63,7 @@ export default function Client() {
       <div>螢幕尺寸 <input value={size} onInput={sizeInput} type="number" min="0" className="my-2 border border-black p-2 w-32" /> 吋</div>
       <div className="[&>label]:inline-block [&>label]:m-3 [&>label>input]:mr-2" >長寬比
         <label>
-          <input type="radio" name="ratio" value="16:9" checked={ratio === '16:9'} onChange={ratioChange} /> 
+          <input type="radio" name="ratio" value="16:9" checked={ratio === '16:9'} onChange={ratioChange} />
           16:9
         </label>
         <label>
