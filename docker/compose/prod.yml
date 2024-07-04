@@ -12,11 +12,14 @@ services:
       - 443:443
     environment:
       - DOMAIN=vexed.me
+    restart: unless-stopped
   certbot:
     image: certbot/certbot
     volumes:
       - ../../certbot/www/:/var/www/certbot:rw
       - ../../certbot/letsencrypt/:/etc/letsencrypt:rw
+  redis:
+    restart: unless-stopped
   crawler:
     build:
       target: prod
