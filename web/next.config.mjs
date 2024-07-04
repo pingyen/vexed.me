@@ -14,6 +14,11 @@ const nextConfig = {
         permanent: true
       },
       {
+        source: '/realtime/taipei-:slug*',
+        destination: '/realtime',
+        permanent: true
+      },
+      {
         source: '/daily/:slug*',
         destination: '/realtime',
         permanent: true
