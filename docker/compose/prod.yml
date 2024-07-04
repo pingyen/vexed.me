@@ -20,6 +20,8 @@ services:
     volumes:
       - ../../certbot/www/:/var/www/certbot:rw
       - ../../certbot/letsencrypt/:/etc/letsencrypt:rw
+    profiles:
+      - donotstart
   redis:
     networks:
       backend:
