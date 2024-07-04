@@ -1,3 +1,4 @@
+import { readFile } from 'fs/promises';
 import { createClient } from 'redis';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
@@ -11,16 +12,6 @@ export const metadata: Metadata = {
 };
 
 const size = 100;
-
-const ignoreImages = new Set([
-  'https://udn.com/static/img/UDN_BABY.png',
-  'https://money.udn.com/static/img/moneyudn.jpg',
-  'https://uc.udn.com.tw/upf/2015_money/SSI/ednvip/default_logo/logo_1280.png',
-  'https://static.chinatimes.com/images/2020/logo-chinatimes-250x250.png',
-  'https://www.cna.com.tw/img/pic_fb.jpg',
-  'https://news.ltn.com.tw/assets/images/all/250_ltn.png',
-  'https://ec.ltn.com.tw/assets/images/default.jpg'
-]);
 
 const cleanTitle = (source: string, title: string) => {
   switch (source) {
@@ -46,9 +37,14 @@ const cleanTitle = (source: string, title: string) => {
 };
 
 export default async function Page({ params }: { params: { page?: string } }) {
-  const redis = await createClient({
-    url: 'redis://redis'
-  }).connect();
+  const [redis, ignoreImages] = await Promise.all([
+    createClient({
+      url: 'redis://redis'
+    }).connect(),
+    new Promise(async resolve => {
+      resolve(new Set(JSON.parse(await readFile('./app/realtime/[page]/ignoreImages.json', 'utf8'))));
+    })
+  ]);
 
   const [sources, num] = await Promise.all([
     new Promise<Map<string, { url: string, name: string }>>(async (resolve) => {
