@@ -34,6 +34,7 @@ const getExpiry = () => Date.now() / 1000 - 1209600; // 86400 * 14
 puppeteer.use(StealthPlugin());
 
 let browser: Browser | null = null;
+let browserCount = 0;
 
 (async () => {
   const redis = await createClient({
@@ -49,6 +50,14 @@ let browser: Browser | null = null;
     }
 
     if (method === 'browser') {
+      if (browserCount === 10) {
+        await browser!.close();
+        browser = await puppeteer.launch();
+        browserCount = 0;
+      }
+
+      ++browserCount;
+
       const page = await browser!.newPage();
 
       try {
