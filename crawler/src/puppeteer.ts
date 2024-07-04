@@ -25,11 +25,17 @@ puppeteer.use(StealthPlugin());
           case 'stylesheet':
             req.abort();
             return;
-          case 'document':
-            if (req.url().startsWith('https://www.youtube.com/embed/') === true) {
+          case 'document': {
+            const url = req.url();
+
+            if (url.startsWith('https://www.youtube.com/') === true ||
+                url.startsWith('https://www.facebook.com/') === true ||
+                url.startsWith('https://platform.twitter.com/') === true ||
+                url.startsWith('https://www.instagram.com/') === true) {
               req.abort();
               return;
             }
+          }
         }
 
         req.continue();
