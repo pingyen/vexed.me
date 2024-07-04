@@ -162,7 +162,7 @@ let browserCount = 0;
 
           return {};
         })();
-      
+     
         const date =
           map.date ??
           jsonLd.datePublished ??
