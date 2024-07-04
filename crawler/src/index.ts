@@ -33,7 +33,7 @@ const getExpiry = () => Date.now() / 1000 - 1296000; // 86400 * 15
 puppeteer.use(StealthPlugin());
 
 const fetchContent = async (url: string, method: string | undefined) => {
-  console.log('fetchContent', url, new Date(), method !== undefined ? method : '');
+  console.log('fetchContent', url, method !== undefined ? method : '');
 
   if (method === 'curl') {
     const data = (await curly.get(url, { timeout: 10 })).data;
@@ -92,7 +92,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
   }).connect();
 
   const gatherUrls = async () => {
-    console.log('gatherUrls() start', new Date());
+    console.log('gatherUrls() start');
 
     const expiry = getExpiry();
 
@@ -164,11 +164,11 @@ const fetchContent = async (url: string, method: string | undefined) => {
       };
     }
 
-    console.log('gatherUrls() end', new Date());
+    console.log('gatherUrls() end');
   };
 
   const crawlCandidates = async () => {
-    console.log('crawlCandidates() start', new Date());
+    console.log('crawlCandidates() start');
 
     const candidates = await redis.HGETALL('realtime:candidates');
     const expiry = getExpiry();
@@ -281,7 +281,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
       }
     };
 
-    console.log('crawlCandidates() end', new Date());
+    console.log('crawlCandidates() end');
   };
 
   cron.schedule('9,19,29,39,49,59 * * * *', (() => {
@@ -300,7 +300,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
   })());
 
   const expireArticles = async () => {
-    console.log('expireArticles() start', new Date());
+    console.log('expireArticles() start');
 
     const expiry = getExpiry();
     const urls = await redis.ZRANGE('realtime:pages', '-inf', expiry, { BY: 'SCORE' });
@@ -314,7 +314,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
 
     await Promise.all(promises);
 
-    console.log('expireArticles() end', new Date());
+    console.log('expireArticles() end');
   };
 
   cron.schedule('30 5,13,21 * * *', expireArticles);
