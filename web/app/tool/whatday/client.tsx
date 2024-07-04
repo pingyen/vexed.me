@@ -39,7 +39,7 @@ export default function Client() {
     <main>
       <h1 className="m-3 text-3xl font-bold">這天星期幾？</h1>
       <div className="text-3xl m-3">
-        <input ref={inputRef} defaultValue={date.toISOString().slice(0, 10)} onInput={inputInput} className="border border-black p-2 w-full max-w-80" />
+        <input ref={inputRef} defaultValue={(new Date(date.getTime() - date.getTimezoneOffset() * 60000)).toISOString().slice(0, 10)} onInput={inputInput} className="border border-black p-2 w-full max-w-80" />
       </div>
       <p className="text-4xl m-3">{day}</p>
     </main>
