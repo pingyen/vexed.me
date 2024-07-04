@@ -30,6 +30,14 @@ const cleanTitle = (source: string, title: string) => {
       return title.endsWith('│TVBS新聞網') === true ?
         title.substring(0, title.length - 8) :
         title;
+    case 'mirrormedia':
+      return title.endsWith(' - 鏡週刊 Mirror Media') === true ?
+        title.substring(0, title.length - 19) :
+        title;
+    case 'nextapple':
+      return title.endsWith('｜壹蘋新聞網') === true ?
+        title.substring(0, title.length - 6) :
+        title;
     default:
       return title;
   }
