@@ -66,7 +66,8 @@ export default function Client(
 
   useEffect(() => {
     const current = mainRef.current as HTMLElement;
-    current.style.height = `calc(100vh - ${current.offsetTop}px)`;
+    const unit = /iP(ad|hone)/.test(navigator.userAgent) === true ? 'dvh' : 'vh';
+    current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
   const buttonClick = () => {
