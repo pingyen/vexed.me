@@ -41,19 +41,24 @@ const fetchContent = async (url: string, method: string | undefined) => {
   }
 
   if (method === 'browser') {
-    let browser;
+    const browser = await puppeteer.launch();
 
     try {
-      browser = await puppeteer.launch();
       const page = await browser.newPage();
-      await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-      const content = await page.content();
-      await page.close();
-      await browser.close();
-      return content;
-    } catch (e) {
-      await browser?.close();
-      throw e;
+
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
+        return await page.content();
+      } finally {
+        await page.close();
+      }
+    } finally {
+      try {
+        await browser.close();
+      } catch (e) {
+        console.warn(e, url, method);
+        browser.process()!.kill(9);
+      }
     }
   }
 
