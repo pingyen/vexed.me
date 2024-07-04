@@ -9,7 +9,6 @@ export default function Client() {
 
   const inputInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/([^12347]) /g, '$1=').replace(/,/g, '%2C');
-    const current = outputRef.current as HTMLInputElement;
 
     if (value.trim() === '') {
       setOutput('');
