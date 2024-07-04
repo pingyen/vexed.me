@@ -21,4 +21,4 @@ RUN npm i
 
 ENV NODE_ENV production
 
-CMD ["bash", "-c", "npm run build && npm run start"]
+CMD ["npm", "run", "start"]
