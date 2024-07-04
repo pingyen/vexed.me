@@ -121,39 +121,41 @@ export default async function Page({ params }: { params: { page?: string } }) {
     articles.push(article);
   }
 
-  return <>
-    <header className="m-3 [&>*]:inline-block">
-      <h1 className="mb-1 text-3xl font-bold"><Link href="/realtime" className="">台灣即時新聞</Link></h1>
-      <p className="mx-3 align-center">{`這是第 ${page} 頁，共 ${num} 頁`}</p>
-    </header>
-    <main>
-      {articles.map(({ url, timestamp, title, source, image, description }, index) =>
-        <article key={index} className="bg-white m-3 p-4 border rounded shadow">
-          <p>
-            <a href={source.url} target="_blank">{source.name}</a>
-            <Time timestamp={timestamp} />
-          </p>
-          <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
-          {image !== undefined &&
-            <Img src={image} alt={title} />}
-          {description !== undefined &&
-            <p>{description}</p>}
-        </article>)}
-    </main>
-    <footer className="m-3">
-      <ol className="text-2xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-3">
-        {page !== 1 && <>
-          <li><Link href="/realtime">第一頁</Link></li>
-          <li><Link href={`/realtime/${page - 1}`}>上一頁</Link></li></>}
-        {pages.map((num, index) =>
-          <li key={index}><Link href={`/realtime/${num}`} className={page === num ? 'text-red-600' : undefined}>{num}</Link></li>)}
-        {page !== num && <>
-          <li><Link href={`/realtime/${page + 1}`}>下一頁</Link></li></>}
-          <li><Link href={`/realtime/${num}`}>最後頁</Link></li>
-      </ol>
-    </footer>
-    <Client page={page} lastUrl={urls.at(-1) as string} />
-  </>;
+  return (
+    <div className="max-w-7xl mx-auto">
+      <header className="m-3 [&>*]:inline-block">
+        <h1 className="mb-1 text-3xl font-bold"><Link href="/realtime" className="">台灣即時新聞</Link></h1>
+        <p className="mx-3 align-center">{`這是第 ${page} 頁，共 ${num} 頁`}</p>
+      </header>
+      <main>
+        {articles.map(({ url, timestamp, title, source, image, description }, index) =>
+          <article key={index} className="bg-white m-3 p-4 border rounded shadow">
+            <p>
+              <a href={source.url} target="_blank">{source.name}</a>
+              <Time timestamp={timestamp} />
+            </p>
+            <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
+            {image !== undefined &&
+              <Img src={image} alt={title} />}
+            {description !== undefined &&
+              <p>{description}</p>}
+          </article>)}
+      </main>
+      <footer className="m-3">
+        <ol className="text-2xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-3">
+          {page !== 1 && <>
+            <li><Link href="/realtime">第一頁</Link></li>
+            <li><Link href={`/realtime/${page - 1}`}>上一頁</Link></li></>}
+          {pages.map((num, index) =>
+            <li key={index}><Link href={`/realtime/${num}`} className={page === num ? 'text-red-600' : undefined}>{num}</Link></li>)}
+          {page !== num && <>
+            <li><Link href={`/realtime/${page + 1}`}>下一頁</Link></li></>}
+            <li><Link href={`/realtime/${num}`}>最後頁</Link></li>
+        </ol>
+      </footer>
+      <Client page={page} lastUrl={urls.at(-1) as string} />
+    </div>
+  );
 };
 
 export const revalidate = 180;
