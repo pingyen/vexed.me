@@ -10,7 +10,7 @@ FROM base AS dev
 CMD ["bash"]
 
 
-FROM base as prod
+FROM base AS prod
 
 RUN mkdir /app/.next
 RUN chown node:node /app/.next
