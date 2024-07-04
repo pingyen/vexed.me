@@ -174,7 +174,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
           document.querySelector('meta[itemprop="datePublished"], meta[property="article:published_time"], meta[name="pubdate"], meta[name="date"]')?.getAttribute('content') ??
           undefined;
 
-        let timestamp;
+        let timestamp: number;
 
         if (date === undefined) {
           timestamp = map.timestamp;
