@@ -41,7 +41,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
   }
 
   if (method === 'browser') {
-    let browser = null;
+    let browser;
 
     try {
       browser = await puppeteer.launch();
@@ -50,14 +50,9 @@ const fetchContent = async (url: string, method: string | undefined) => {
       const content = await page.content();
       await page.close();
       await browser.close();
-      browser = null;
       return content;
     } catch (e) {
-      if (browser !== null) {
-        await browser.close();
-        browser = null;
-      }
-
+      await browser?.close();
       throw e;
     }
   }
