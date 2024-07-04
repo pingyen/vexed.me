@@ -47,6 +47,27 @@ const fetchContent = async (url: string, method: string | undefined) => {
       const page = await browser.newPage();
 
       try {
+        await page.setRequestInterception(true);
+
+        page.on('request', req => {
+          switch (req.resourceType()) {
+            case 'font':
+            case 'image':
+            case 'manifest':
+            case 'media':
+            case 'stylesheet':
+              req.abort();
+              return;
+            case 'document':
+              if (req.url().startsWith('https://www.youtube.com/embed/') === true) {
+                req.abort();
+                return;
+              }
+          }
+
+          req.continue();
+        });
+
         await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
         return await page.content();
       } finally {
