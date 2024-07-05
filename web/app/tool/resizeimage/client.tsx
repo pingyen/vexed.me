@@ -1,5 +1,7 @@
 'use client';
 
+import Ad from '../../../component/ad';
+
 export default function Client() {
   const formSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -90,6 +92,7 @@ export default function Client() {
         </div>
         <div><button className="my-2 border border-black p-8">調整</button></div>
       </form>
+      <Ad id={2237259198} />
     </main>
   );
 }

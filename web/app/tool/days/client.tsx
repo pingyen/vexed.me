@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Ad from '../../../component/ad';
 
 export default function Client() {
   const [start, setStart] = useState('');
@@ -96,6 +97,7 @@ export default function Client() {
         <input value={end} onInput={endInput} />
       </div>
       <div>距離 <input type="number" value={days} className="w-32" onInput={daysInput} /> 天 (可以負數)</div>
+      <Ad id={3572986606} />
     </main>
   );
 }

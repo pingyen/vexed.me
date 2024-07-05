@@ -1,8 +1,10 @@
 import { readFile } from 'fs/promises';
 import { createClient } from 'redis';
+import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Ad from '../../../component/ad';
 import Time from './time';
 import Img from './img';
 import Client from './client';
@@ -12,6 +14,20 @@ export const metadata: Metadata = {
 };
 
 const size = 100;
+
+const adIds = new Map<number, number>([
+  [10, 6212292798],
+  [20, 7949280793],
+  [30, 3519081194],
+  [40, 9426013990],
+  [50, 1902747194],
+  [60, 3379480393],
+  [70, 4856213595],
+  [80, 6332946798],
+  [90, 7809679994]
+]);
+
+const adClasses = 'max-w-[1200px] mx-auto';
 
 export default async function Page({ params }: { params: { page?: string } }) {
   const [redis, ignoreImages, titleEndings] = await Promise.all([
@@ -128,18 +144,25 @@ export default async function Page({ params }: { params: { page?: string } }) {
         <p className="mx-3 align-center">{`這是第 ${page} 頁，共 ${num} 頁`}</p>
       </header>
       <main>
-        {articles.map(({ url, timestamp, title, source, image, description }, index) =>
-          <article key={index} className="bg-white m-3 p-4 border rounded shadow">
-            <p>
-              <a href={source.url} target="_blank">{source.name}</a>
-              <Time timestamp={timestamp} />
-            </p>
-            <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
-            {image !== undefined &&
-              <Img src={image} alt={title} />}
-            {description !== undefined &&
-              <p>{description}</p>}
-          </article>)}
+        {articles.map(({ url, timestamp, title, source, image, description }, index) => {
+          const adId = adIds.get(index);
+          return <Fragment key={index}>
+            {adId !== undefined &&
+              <Ad id={adId} classes={adClasses} />}
+            <article className="bg-white m-3 p-4 border rounded shadow">
+              <p>
+                <a href={source.url} target="_blank">{source.name}</a>
+                <Time timestamp={timestamp} />
+              </p>
+              <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
+              {image !== undefined &&
+                <Img src={image} alt={title} />}
+              {description !== undefined &&
+                <p>{description}</p>}
+            </article>
+          </Fragment>
+        })}
+        <Ad id={8820361999} classes={adClasses} />
       </main>
       <footer className="m-3">
         <ol className="text-2xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-3">

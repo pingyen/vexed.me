@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Ad from '../../../component/ad';
 
 const formatNumber = (num: number) =>
   num.toLocaleString(undefined, {
@@ -79,6 +80,7 @@ export default function Client() {
       <div>高 {formatNumber(height)} 吋 {formatNumber(height * 2.54)} 公分</div>
       <div>面積 {formatNumber(area)} 平方吋 {formatNumber(area * 2.54 * 2.54)} 平方公分</div>
       <div>對角線 {formatNumber(Number(size))} 吋 {formatNumber(Number(size) * 2.54)} 公分</div>
+      <Ad id={9198497706} />
     </main>
   );
 }

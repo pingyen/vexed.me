@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import Ad from '../../../component/ad';
 
 export default function Client() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,6 +43,7 @@ export default function Client() {
         <span>輸出</span>
         <input value={output} ref={outputRef} readOnly onClick={outputClick} />
       </div>
+      <Ad id={9481324399} />
     </main>
   );
 }

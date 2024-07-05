@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Ad from '../../../component/ad';
 
 const formatDate = (iso: string) => `${iso.substring(0, 10)} ${iso.substring(11, 19)}`;
 
@@ -96,6 +97,7 @@ export default function Client() {
         <label><input type="radio" name="timezone" checked={timezone === 'utc'} onChange={utcChange} />UTC</label>
         <label><input type="radio" name="timezone" checked={timezone === 'local'} onChange={localChange} />在地時間</label>
       </div>
+      <Ad id={2940496526} />
     </main>
   );
 }

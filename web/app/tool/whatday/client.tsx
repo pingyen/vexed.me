@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState, useMemo, useCallback, useEffect } from 'react';
+import Ad from '../../../component/ad';
 
 const days = [
   '星期日',
@@ -42,6 +43,7 @@ export default function Client() {
         <input ref={inputRef} defaultValue={(new Date(date.getTime() - date.getTimezoneOffset() * 60000)).toISOString().slice(0, 10)} onInput={inputInput} className="border border-black p-2 w-full max-w-80" />
       </div>
       <p className="text-4xl m-3">{day}</p>
+      <Ad id={2132839991} />
     </main>
   );
 }

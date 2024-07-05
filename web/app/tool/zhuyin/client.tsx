@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react';
 import jsonp from 'jsonp';
+import Ad from '../../../component/ad';
 
 export default function Client() {
   const outputRef = useRef<HTMLInputElement>(null);
@@ -39,6 +40,7 @@ export default function Client() {
         <span>輸出</span>
         <input value={output} ref={outputRef} readOnly onClick={outputClick} />
       </div>
+      <Ad id={5874063928} />
     </main>
   );
 }

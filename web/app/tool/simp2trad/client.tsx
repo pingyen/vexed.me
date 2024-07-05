@@ -1,5 +1,6 @@
 'use client';
 
+import Ad from '../../../component/ad';
 import s2tChar from 'tongwen-dict/dist/s2t-char.json';
 
 const s2tEntries = Object.entries(s2tChar);
@@ -57,6 +58,7 @@ export default function Client() {
         <div><button className="my-2 border border-black p-8">轉換</button></div>
       </form>
       <p className="m-3 text-lg">Powered by <a href="https://github.com/tongwentang" target="_blank">新同文堂</a></p>
+      <Ad id={2613742201} />
     </main>
   );
 }
