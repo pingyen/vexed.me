@@ -19,5 +19,15 @@ export default function Client(
     sessionStorage.lastUrl = lastUrl;
   }, [page, lastUrl]);
 
+  useEffect(() => {
+    if (navigator.userAgent.indexOf('Mobile') === -1) {
+      return;
+    }
+
+    document.querySelectorAll('main > article a').forEach(anchor => {
+      anchor.removeAttribute('target');
+    });
+  }, []);
+
   return <style jsx global>{`body { background: #DDD }`}</style>;
 }
