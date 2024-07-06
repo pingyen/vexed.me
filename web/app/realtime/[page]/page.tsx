@@ -172,8 +172,8 @@ export default async function Page({ params }: { params: { page?: string } }) {
           {pages.map((num, index) =>
             <li key={index} className={page === num ? '[&>a]:lg:text-red-600' : '!hidden lg:!inline-block'}><Link href={`/realtime/${num}`}>{num}</Link></li>)}
           {page !== num && <>
-            <li><Link href={`/realtime/${page + 1}`} prefetch={true}>下一頁</Link></li></>}
-            <li><Link href={`/realtime/${num}`}>最後頁</Link></li>
+            <li><Link href={`/realtime/${page + 1}`} prefetch={true}>下一頁</Link></li>
+            <li><Link href={`/realtime/${num}`}>最後頁</Link></li></>}
         </ol>
       </footer>
       <Client page={page} lastUrl={urls.at(-1) as string} />
