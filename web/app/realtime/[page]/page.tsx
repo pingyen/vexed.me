@@ -165,12 +165,12 @@ export default async function Page({ params }: { params: { page?: string } }) {
         <Ad id={8820361999} classes={adClasses} />
       </main>
       <footer className="m-3">
-        <ol className="text-2xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-3">
+        <ol className="text-xl [&>li]:inline-block [&>li>a]:block [&>li>a]:p-1.5">
           {page !== 1 && <>
             <li><Link href="/realtime">第一頁</Link></li>
             <li><Link href={`/realtime/${page - 1}`}>上一頁</Link></li></>}
           {pages.map((num, index) =>
-            <li key={index}><Link href={`/realtime/${num}`} className={page === num ? 'text-red-600' : undefined}>{num}</Link></li>)}
+            <li key={index} className={page === num ? '[&>a]:lg:text-red-600' : '!hidden lg:!inline-block'}><Link href={`/realtime/${num}`}>{num}</Link></li>)}
           {page !== num && <>
             <li><Link href={`/realtime/${page + 1}`} prefetch={true}>下一頁</Link></li></>}
             <li><Link href={`/realtime/${num}`}>最後頁</Link></li>
