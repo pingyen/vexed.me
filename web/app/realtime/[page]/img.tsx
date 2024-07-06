@@ -1,30 +1,25 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function Img({ src, alt }: { src: string, alt: string }) {
   const imgRef = useRef<HTMLImageElement>(null);
-  const [error, setError] = useState(false);
 
   useEffect(() => {
     const current = imgRef.current as HTMLImageElement;
-    const img = new Image();
 
-    img.addEventListener('load', () => {
-      current.addEventListener('load', () => {
-        current.className = 'block my-2 w-full max-w-sm';
-      });
+    if (current.complete === true) {
+      if (current.naturalWidth === 0) {
+        current.style.display = 'none';
+      }
 
-      current.src = src;
-    });
+      return;
+    }
 
-    img.addEventListener('error', () => {
-      setError(true);
-    });
+    current.addEventListener('error', function () {
+      this.style.display = 'none';
+    }, true);
+  }, []);
 
-    img.src = src;
-  }, [src]);
-
-  return error === false &&
-    <img ref={imgRef} alt={alt} className="invisible h-60" />; // eslint-disable-line @next/next/no-img-element
+  return <img ref={imgRef} src={src} alt={alt} className="block my-2 w-full max-w-sm" />; // eslint-disable-line @next/next/no-img-element
 }
