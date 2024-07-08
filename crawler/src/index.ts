@@ -224,6 +224,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
 
         if (title === undefined) {
           console.warn('title === undefined', url, map);
+          redis.HDEL('realtime:candidates', url);
           continue;
         }
 
