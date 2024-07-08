@@ -1,4 +1,4 @@
-FROM node:slim AS base
+FROM node:22-alpine AS base
 
 USER node
 
@@ -7,7 +7,7 @@ WORKDIR /app
 
 FROM base AS dev
 
-CMD ["bash"]
+CMD ["/bin/sh"]
 
 
 FROM base AS prod
