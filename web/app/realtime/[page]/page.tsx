@@ -137,6 +137,8 @@ export default async function Page({ params }: { params: { page?: string } }) {
     articles.push(article);
   }
 
+  redis.disconnect();
+
   return (
     <div className="max-w-7xl mx-auto">
       <header className="m-3 [&>*]:inline-block">
