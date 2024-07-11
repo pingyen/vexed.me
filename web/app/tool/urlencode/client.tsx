@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 export default function Client() {
   const inputRef = useRef<HTMLInputElement>(null);

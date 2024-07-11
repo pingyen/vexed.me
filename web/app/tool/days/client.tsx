@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 export default function Client() {
   const [start, setStart] = useState('');

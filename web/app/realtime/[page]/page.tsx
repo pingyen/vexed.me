@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 import Time from './time';
 import Img from './img';
 import Client from './client';

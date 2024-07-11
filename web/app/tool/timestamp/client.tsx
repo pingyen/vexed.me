@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 const formatDate = (iso: string) => `${iso.substring(0, 10)} ${iso.substring(11, 19)}`;
 

@@ -1,6 +1,6 @@
 'use client';
 
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 export default function Client() {
   const formSubmit = (e: React.FormEvent) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 import s2tChar from 'tongwen-dict/dist/s2t-char.json';
 
 const s2tEntries = Object.entries(s2tChar);

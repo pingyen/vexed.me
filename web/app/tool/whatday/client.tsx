@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useMemo, useCallback, useEffect } from 'react';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 const days = [
   '星期日',

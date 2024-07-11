@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import jsonp from 'jsonp';
-import Ad from '../../../component/ad';
+import Ad from '../../../components/ad';
 
 export default function Client() {
   const outputRef = useRef<HTMLInputElement>(null);
