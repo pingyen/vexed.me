@@ -151,7 +151,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
           return <Fragment key={index}>
             {adId !== undefined &&
               <Ad id={adId} classes={adClasses} />}
-            <article className="bg-white m-3 p-4 border rounded shadow">
+            <article className="bg-white m-3 p-4 border rounded shadow-custom">
               <p>
                 <a href={source.url} target="_blank">{source.name}</a>
                 <Time timestamp={timestamp} />
