@@ -103,9 +103,9 @@ sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml restar
 ### View Logs
 
 ```
-sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml logs -n 1000 -t --follow crawler
+sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml logs -n 1000 -t -f crawler
 ```
 
 ```
-sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml logs -n 1000 -t --follow web
+sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml logs -n 1000 -t -f web
 ```
