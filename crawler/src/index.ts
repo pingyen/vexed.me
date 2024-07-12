@@ -228,6 +228,12 @@ const fetchContent = async (url: string, method: string | undefined) => {
           continue;
         }
 
+        if (title === '') {
+          console.warn("title === ''", url, map);
+          redis.HDEL('realtime:candidates', url);
+          continue;
+        }
+
         const image =
           document.querySelector('meta[property="og:image"]')?.getAttribute('content') ||
           jsonLd.thumbnailUrl ||
