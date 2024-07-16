@@ -148,6 +148,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
 
     const candidates = await redis.HGETALL('realtime:candidates');
     const expiry = getExpiry();
+    const articles = new Map();
 
     for (const [url, json] of Object.entries(candidates)) {
       const map = JSON.parse(json);
@@ -245,20 +246,28 @@ const fetchContent = async (url: string, method: string | undefined) => {
           jsonLd.description ||
           undefined;
 
-        redis.SET(`realtime:article:${url}`, JSON.stringify({
+        const article = {
           timestamp,
           title,
           source: key,
           image,
           description
-        }));
+        };
+
+        articles.set(url, article);
+        redis.SET(`realtime:article:${url}`, JSON.stringify(article));
 
         const urls = await redis.ZRANGE('realtime:pages', timestamp - 180, timestamp + 180, { BY: 'SCORE' });
 
         let slot = 'pages';
 
         for (const base of urls) {
-          const article = JSON.parse(await redis.GET(`realtime:article:${base}`) as string);
+          let article = articles.get(base);
+
+          if (article === undefined) {
+            article = JSON.parse(await redis.GET(`realtime:article:${base}`) as string);
+            articles.set(base, article);
+          }
 
           if (article.title === title &&
               article.description === description) {
