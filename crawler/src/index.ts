@@ -19,6 +19,8 @@ interface Source {
   method?: string
 };
 
+const cleanString = (str: string) => str.replaceAll(' ', '');
+
 const stripCtrlChars = (str: string) => str.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
 
 const fixXML = (xml: string) => stripCtrlChars(xml).replace(/&(?!#?[a-z0-9]+;)/g, '&amp;');
@@ -246,12 +248,17 @@ const fetchContent = async (url: string, method: string | undefined) => {
           jsonLd.description ||
           undefined;
 
+        const cleanTitle = cleanString(title);
+        const cleanDescription = cleanString(description);
+
         const article = {
           timestamp,
           title,
           source: key,
           image,
-          description
+          description,
+          cleanTitle,
+          cleanDescription
         };
 
         articles.set(url, article);
@@ -266,11 +273,13 @@ const fetchContent = async (url: string, method: string | undefined) => {
 
           if (article === undefined) {
             article = JSON.parse(await redis.GET(`realtime:article:${base}`) as string);
+            article.cleanTitle = cleanString(article.title);
+            article.cleanDescription = cleanString(article.description);
             articles.set(base, article);
           }
 
-          if (article.title === title &&
-              article.description === description) {
+          if (article.cleanTitle === cleanTitle &&
+              article.cleanDescription === cleanDescription) {
             console.warn('dup', url, base, article, timestamp, key, image);
             slot = 'dups';
             break;
