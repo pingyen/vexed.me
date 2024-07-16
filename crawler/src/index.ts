@@ -253,7 +253,22 @@ const fetchContent = async (url: string, method: string | undefined) => {
           description
         }));
 
-        redis.ZADD('realtime:pages', {
+        const urls = await redis.ZRANGE('realtime:pages', timestamp - 180, timestamp + 180, { BY: 'SCORE' });
+
+        let slot = 'pages';
+
+        for (const base of urls) {
+          const article = JSON.parse(await redis.GET(`realtime:article:${base}`) as string);
+
+          if (article.title === title &&
+              article.description === description) {
+            console.warn('dup', url, base, article, timestamp, key, image);
+            slot = 'dups';
+            break;
+          }
+        }
+
+        redis.ZADD(`realtime:${slot}`, {
           score: timestamp,
           value: url
         });
@@ -286,13 +301,17 @@ const fetchContent = async (url: string, method: string | undefined) => {
     console.log('expireArticles() start');
 
     const expiry = getExpiry();
-    const urls = await redis.ZRANGE('realtime:pages', '-inf', expiry, { BY: 'SCORE' });
 
     const promises = [];
 
-    for (const url of urls) {
-      promises.push(redis.ZREM('realtime:pages', url));
-      promises.push(redis.DEL(`realtime:article:${url}`));
+    for (const slot of ['pages', 'dups']) {
+      const key = `realtime:${slot}`;
+      const urls = await redis.ZRANGE(key, '-inf', expiry, { BY: 'SCORE' });
+
+      for (const url of urls) {
+        promises.push(redis.ZREM(key, url));
+        promises.push(redis.DEL(`realtime:article:${url}`));
+      }
     }
 
     await Promise.all(promises);
