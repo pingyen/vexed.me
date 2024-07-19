@@ -249,7 +249,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
           undefined;
 
         const cleanTitle = cleanString(title);
-        const cleanDescription = cleanString(description);
+        const cleanDescription = typeof description === 'string' ? cleanString(description) : description;
 
         const article = {
           timestamp,
@@ -274,7 +274,8 @@ const fetchContent = async (url: string, method: string | undefined) => {
           if (article === undefined) {
             article = JSON.parse(await redis.GET(`realtime:article:${base}`) as string);
             article.cleanTitle = cleanString(article.title);
-            article.cleanDescription = cleanString(article.description);
+            const description = article.description;
+            article.cleanDescription = typeof description === 'string' ? cleanString(description) : undefined;
             articles.set(base, article);
           }
 
