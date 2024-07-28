@@ -279,11 +279,16 @@ const fetchContent = async (url: string, method: string | undefined) => {
             articles.set(base, article);
           }
 
-          if (article.cleanTitle === cleanTitle &&
-              article.cleanDescription === cleanDescription) {
-            console.warn('dup', url, base, article, timestamp, key, image);
-            slot = 'dups';
-            break;
+          if (article.cleanTitle === cleanTitle) {
+            const cleanDescription2 = article.cleanDescription;
+
+            if (cleanDescription === cleanDescription2 ||
+                cleanDescription.startsWith(cleanDescription2) === true ||
+                cleanDescription2.startsWith(cleanDescription) === true) {
+              console.warn('dup', url, base, article, timestamp, key, image);
+              slot = 'dups';
+              break;
+            }
           }
         }
 
