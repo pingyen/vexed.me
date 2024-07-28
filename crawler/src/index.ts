@@ -61,7 +61,16 @@ const fetchContent = async (url: string, method: string | undefined) => {
     });
   }
 
-  return await fetch(url, { signal: AbortSignal.timeout(10000) }).then(response => response.text());
+  return await fetch(url, { signal: AbortSignal.timeout(10000) })
+    .then(response => {
+      const url = response.url;
+
+      if ((new URL(url)).pathname === '/') {
+        throw new Error(`pathname === '/' ${url}`);
+      }
+
+      return response.text();
+    });
 };
 
 (async () => {
