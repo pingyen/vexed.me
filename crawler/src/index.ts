@@ -19,7 +19,7 @@ interface Source {
   method?: string
 };
 
-const cleanString = (str: string) => str.replace(/[ …\.]/g, '');
+const cleanString = (str: string) => str.replace(/[ …\.]/g, '').toLowerCase();
 
 const stripCtrlChars = (str: string) => str.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
 
