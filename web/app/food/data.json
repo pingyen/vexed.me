@@ -1146,12 +1146,6 @@
     "description": "雞腿飯\n\n排骨飯"
   },
   {
-    "name": "橫濱家系大和家拉麵",
-    "latitude": 25.0446481,
-    "longitude": 121.5444484,
-    "description": "醬油拉麵\n\n溏心蛋"
-  },
-  {
     "name": "初面",
     "latitude": 25.044613,
     "longitude": 121.515326,
@@ -1330,6 +1324,12 @@
     "latitude": 25.042117962409886,
     "longitude": 121.55688434130165,
     "description": "大白蝦 大蒜奶油醬"
+  },
+  {
+    "name": "橫濱家系大和家拉麵 大安店",
+    "latitude": 25.04205849248219,
+    "longitude": 121.54442006246143,
+    "description": "醬油拉麵\n\n溏心蛋"
   },
   {
     "name": "BATAVIA",
@@ -1764,12 +1764,6 @@
     "description": "葡萄柚綠茶"
   },
   {
-    "name": "珍珍海產粥",
-    "latitude": 23.4788845,
-    "longitude": 120.4496991,
-    "description": "營業時間 2030 - 4 週二三公休\n\n煎魚腸\n\n海產粥\n\n蛤仔湯"
-  },
-  {
     "name": "品安豆花",
     "latitude": 23.478872319327785,
     "longitude": 120.45087931753724,
@@ -1792,5 +1786,11 @@
     "latitude": 23.4774955,
     "longitude": 120.4499824,
     "description": "生炒螺肉"
+  },
+  {
+    "name": "珍珍海產粥",
+    "latitude": 23.47661212765626,
+    "longitude": 120.45740802200461,
+    "description": "煎魚腸\n\n海產粥\n\n蛤仔湯"
   }
 ]
