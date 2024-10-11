@@ -642,6 +642,12 @@
     "description": "蒟蒻\n\n酸白菜\n\n透抽\n\n鴨肝\n\n豬腳"
   },
   {
+    "name": "真好味烤鴨 大稻埕",
+    "latitude": 25.056967702656806,
+    "longitude": 121.50843949284798,
+    "description": "烤鴨"
+  },
+  {
     "name": "寧夏夜市 歐帕韓國炸雞",
     "latitude": 25.0569513,
     "longitude": 121.5156608,
@@ -1029,7 +1035,7 @@
     "name": "麵屋武藏 本店",
     "latitude": 25.0459993,
     "longitude": 121.5170414,
-    "description": "蒜味雞白湯\n\n焦糖起司布丁\n\nHOYII B1"
+    "description": "味玉叉燒蒜味雞白湯拉麵\n\n味玉叉燒雞白湯拉麵\n\n誠品生活 站前店 B1"
   },
   {
     "name": "強粉廣東腸粉",
