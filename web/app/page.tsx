@@ -24,16 +24,18 @@ export default function Page() {
           <li><a href="/tool" target="_blank">Tools</a></li>
       </ul>
       <ul>
-          <li><a href="https://www.facebook.com/pingyen.tsai" target="_blank" >Facebook</a></li>
-          <li><a href="https://www.facebook.com/groups/p.vexed" target="_blank" >Facebook Group</a></li>
-          <li><a href="https://www.instagram.com/vexed/" target="_blank" >Instagram</a></li>
           <li><a href="https://github.com/pingyen" target="_blank" >GitHub</a></li>
           <li><a href="https://gist.github.com/pingyen" target="_blank" >GitHub Gist</a></li>
           <li><a href="https://www.linkedin.com/in/pingyen" target="_blank" >LinkedIn</a></li>
           <li><a href="https://speakerdeck.com/pingyen" target="_blank" >Speaker Deck</a></li>
       </ul>
+      <ul>
+          <li><a href="https://www.facebook.com/pingyen.tsai" target="_blank" >Facebook</a></li>
+          <li><a href="https://www.instagram.com/vexed/" target="_blank" >Instagram</a></li>
+          <li><a href="https://t.me/pingyentsai" target="_blank" >Telegram</a></li>
+          <li><a href="https://t.me/P_Vexed" target="_blank" >Telegram Group</a></li>
+      </ul>
     </main>
     <Client/>
   </>;
 }
-
