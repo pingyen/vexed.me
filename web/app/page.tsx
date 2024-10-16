@@ -31,11 +31,15 @@ export default function Page() {
       </ul>
       <ul>
           <li><a href="https://www.facebook.com/pingyen.tsai" target="_blank" >Facebook</a></li>
-          <li><a href="https://www.instagram.com/vexed/" target="_blank" >Instagram</a></li>
+          <li><a href="https://www.instagram.com/vexed" target="_blank" >Instagram</a></li>
+          <li><a href="https://www.threads.net/@vexed" target="_blank" >Threads</a></li>
           <li><a href="https://t.me/pingyentsai" target="_blank" >Telegram</a></li>
           <li><a href="https://t.me/P_Vexed" target="_blank" >Telegram Group</a></li>
+          <li><a href="https://x.com/PingYenTsai" target="_blank" >X</a></li>
+          <li><a href="https://www.plurk.com/vexed" target="_blank" >Plurk</a></li>
       </ul>
     </main>
     <Client/>
   </>;
 }
+
