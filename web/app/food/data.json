@@ -102,12 +102,6 @@
     "description": "黑白切 滷豬肉"
   },
   {
-    "name": "蘆洲七號麵線 三重店",
-    "latitude": 25.06997598026667,
-    "longitude": 121.49716496797745,
-    "description": "花枝麵線"
-  },
-  {
     "name": "英瑛美代子的店",
     "latitude": 25.0689,
     "longitude": 121.613928,
@@ -186,12 +180,6 @@
     "description": "牛肉燴飯\n\n清燉牛雜湯\n\n川燙牛片湯"
   },
   {
-    "name": "延三生炒羊肉",
-    "latitude": 25.06601758026454,
-    "longitude": 121.51115566720581,
-    "description": "羊肉燴飯\n\n清燉羊肉湯\n\n生炒羊肉\n\n薑絲羊片湯"
-  },
-  {
     "name": "娥嬤炖鰻",
     "latitude": 25.065996521023237,
     "longitude": 121.51623054110442,
@@ -246,6 +234,12 @@
     "description": "綜合握壽司\n\n蒸蛋\n\n味噌湯\n\n蝦蘆手捲"
   },
   {
+    "name": "延三夜市 台灣土羊肉",
+    "latitude": 25.065525886054274,
+    "longitude": 121.51114723264237,
+    "description": "當歸羊赤肉湯"
+  },
+  {
     "name": "郁日式炸豬排 台北延三店",
     "latitude": 25.065460040783748,
     "longitude": 121.5109405995589,
@@ -298,6 +292,12 @@
     "latitude": 25.065025,
     "longitude": 121.511186,
     "description": "白菜滷"
+  },
+  {
+    "name": "良友藥燉排骨",
+    "latitude": 25.065020870381097,
+    "longitude": 121.51118289953541,
+    "description": "藥燉排骨"
   },
   {
     "name": "延三夜市 阿珠壽司",
@@ -1035,13 +1035,13 @@
     "name": "石研室",
     "latitude": 25.0460478,
     "longitude": 121.5170292,
-    "description": "板腱牛 火焰 肉增量\n\nHOYII B1"
+    "description": "板腱牛 火焰 肉增量\n\n誠品生活 站前店 B1"
   },
   {
-    "name": "吉豚屋 和億北車店",
+    "name": "吉豚屋 北車店",
     "latitude": 25.046009003957543,
     "longitude": 121.51704139665311,
-    "description": "腰內豬排\n\n豬排丼\n\n味噌湯\n\n波菜"
+    "description": "腰內豬排\n\n豬排丼\n\n味噌湯\n\n波菜\n\n誠品生活 站前店 B1"
   },
   {
     "name": "良品牛肉麵",
@@ -1162,12 +1162,6 @@
     "latitude": 25.045106478928236,
     "longitude": 121.51661024718481,
     "description": "好吃雞肉飯套餐"
-  },
-  {
-    "name": "老賴茶棧 台北北車店",
-    "latitude": 25.0450963474733,
-    "longitude": 121.51703648086641,
-    "description": "豆香紅茶"
   },
   {
     "name": "SUKIYA 台北站前店",
