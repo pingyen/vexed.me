@@ -900,10 +900,10 @@
     "description": "炭烤雞豬雙麴定食\n\nB1 美食街"
   },
   {
-    "name": "六堆伙房 中山店",
+    "name": "六堆伙房 中山南西店",
     "latitude": 25.052405,
     "longitude": 121.5222584,
-    "description": "菜尾鍋"
+    "description": "客家菜尾盅\n\n酸菜魚片麵\n\n口水雞\n\n胡麻龍鬚塔"
   },
   {
     "name": "IKEA 小巨蛋店",
@@ -1054,6 +1054,12 @@
     "latitude": 25.0460478,
     "longitude": 121.5170292,
     "description": "板腱牛 火焰 肉增量\n\n誠品生活 站前店 B1"
+  },
+  {
+    "name": "六堆伙房 北車站前店",
+    "latitude": 25.046024907500033,
+    "longitude": 121.51694964063935,
+    "description": "客家菜尾盅\n\n酸菜魚片麵\n\n口水雞\n\n胡麻龍鬚塔"
   },
   {
     "name": "吉豚屋 北車店",
