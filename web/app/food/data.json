@@ -927,7 +927,7 @@
     "name": "IKEA 小巨蛋店",
     "latitude": 25.052355619684764,
     "longitude": 121.54847029583482,
-    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯"
+    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯\n\n魷魚螺肉蒜"
   },
   {
     "name": "鼎泰豐 南西店",
@@ -976,6 +976,12 @@
     "latitude": 25.049628668612588,
     "longitude": 121.51700025386296,
     "description": "酸菜蛤蜊魚麵 Q 麵\n\n烏梅桂花蜜"
+  },
+  {
+    "name": "蜀羊 - 京站店",
+    "latitude": 25.04930957709639,
+    "longitude": 121.51756207062762,
+    "description": "高麗菜"
   },
   {
     "name": "德州美墨炸雞 京站店",
@@ -1515,7 +1521,7 @@
     "name": "IKEA 新莊店",
     "latitude": 25.0415073,
     "longitude": 121.4652713,
-    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯"
+    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯\n\n魷魚螺肉蒜"
   },
   {
     "name": "麵屋有漁",
@@ -1839,7 +1845,7 @@
     "name": "IKEA 新店店",
     "latitude": 24.97263957786608,
     "longitude": 121.53006632339499,
-    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯"
+    "description": "牛豬肉丸\n\n豬肋排\n\n牛排\n\n豬膝\n\n戰斧豬排\n\n炸雞翅\n\n濃湯\n\n魷魚螺肉蒜"
   },
   {
     "name": "中壢夜市 混蛋爆蝦",
@@ -1942,5 +1948,23 @@
     "latitude": 23.47661212765626,
     "longitude": 120.45740802200461,
     "description": "煎魚腸\n\n海產粥\n\n蛤仔湯"
+  },
+  {
+    "name": "加樂小廚",
+    "latitude": 22.62442516209764,
+    "longitude": 120.31573327043635,
+    "description": "蒜味鮮丁香"
+  },
+  {
+    "name": "正北方麵食館",
+    "latitude": 22.61831682252438,
+    "longitude": 120.31116169586087,
+    "description": "牛肉捲餅"
+  },
+  {
+    "name": "南明肉燥飯",
+    "latitude": 22.617067064218805,
+    "longitude": 120.2982904136521,
+    "description": "煎魚腸"
   }
 ]
