@@ -312,16 +312,10 @@
     "description": "白菜滷\n\n冬瓜排骨湯"
   },
   {
-    "name": "良友 藥燉排骨",
-    "latitude": 25.065025,
-    "longitude": 121.511186,
-    "description": "白菜滷"
-  },
-  {
     "name": "良友藥燉排骨",
     "latitude": 25.065020870381097,
     "longitude": 121.51118289953541,
-    "description": "藥燉排骨"
+    "description": "藥燉排骨\n\n白菜滷"
   },
   {
     "name": "延三夜市 阿珠壽司",
@@ -520,6 +514,12 @@
     "latitude": 25.06216877047962,
     "longitude": 121.51119302888662,
     "description": "魚丸湯\n\n碗粿"
+  },
+  {
+    "name": "永吉川湘小館",
+    "latitude": 25.062015785160934,
+    "longitude": 121.51586399988851,
+    "description": "腰果雞丁\n\n客家小炒\n\n馬鈴薯燉肉"
   },
   {
     "name": "重慶郭魚湯",
