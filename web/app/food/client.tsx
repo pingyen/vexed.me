@@ -58,7 +58,7 @@ export default function Client(
     <Header button={sortState === SortState.UNSORTED ? { click: () => { setSortState(SortState.SORTING) }, text: '以距離排序' } : undefined} />
     <main>
       {items.map(({ name, description }, index) =>
-        <article key={index} className={`m-3 p-4 border rounded shadow-custom ${sortState === SortState.SORTING && 'animate-pulse'}`}>
+        <article key={index} className={`m-3 p-4 border rounded-sm shadow-custom ${sortState === SortState.SORTING && 'animate-pulse'}`}>
           <h2 className="mb-4 text-2xl font-bold"><a className="text-[#1a0dab]" href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} target="_blank">{name}</a></h2>
           <pre className="leading-4">{description}</pre>
         </article>

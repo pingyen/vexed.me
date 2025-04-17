@@ -10,7 +10,7 @@ export default function Client(
   const pathname = usePathname();
 
   return (
-    <header className="mx-3 mb-3 [&>*]:inline-block">
+    <header className="mx-3 mb-3 *:inline-block">
       <h1 className="text-4xl font-bold relative top-2">食</h1>
       <nav className="mx-2">
         <ul className="[&>li]:inline-block [&>li>a]:p-1">

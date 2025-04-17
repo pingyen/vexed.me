@@ -152,7 +152,7 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
 
   return (
     <div className="max-w-7xl mx-auto">
-      <header className="m-3 [&>*]:inline-block">
+      <header className="m-3 *:inline-block">
         <h1 className="mb-1 text-3xl font-bold"><Link href="/realtime" className="">台灣即時新聞</Link></h1>
         <p className="mx-3 align-center">{`這是第 ${page} 頁，共 ${num} 頁`}</p>
       </header>
@@ -162,7 +162,7 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
           return <Fragment key={index}>
             {adId !== undefined &&
               <Ad id={adId} classes={adClasses} />}
-            <article className="bg-white m-3 p-4 border rounded shadow-custom">
+            <article className="bg-white m-3 p-4 border rounded-sm shadow-custom">
               <p>
                 <a href={source.url} target="_blank">{source.name}</a>
                 <Time timestamp={timestamp} />
@@ -183,7 +183,7 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
             <li><Link href="/realtime">第一頁</Link></li>
             <li><Link href={`/realtime/${page - 1}`}>上一頁</Link></li></>}
           {pages.map((num, index) =>
-            <li key={index} className={page === num ? '[&>a]:lg:text-red-600' : '!hidden lg:!inline-block'}><Link href={`/realtime/${num}`}>{num}</Link></li>)}
+            <li key={index} className={page === num ? 'lg:[&>a]:text-red-600' : 'hidden! lg:inline-block!'}><Link href={`/realtime/${num}`}>{num}</Link></li>)}
           {page !== num && <>
             <li><Link href={`/realtime/${page + 1}`} prefetch={true}>下一頁</Link></li>
             <li><Link href={`/realtime/${num}`}>最後頁</Link></li></>}

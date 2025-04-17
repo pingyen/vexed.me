@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return <>
     <main className="bg-[#FFD356] min-h-screen font-serif
-      [&>*]:inline-block
+      *:inline-block
       [&>ul]:mx-12
       [&>ul>li]:list-disc [&>ul>li]:py-2
       [&>ul>li>a]:block [&>ul>li>a]:tracking-widest
