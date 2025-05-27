@@ -50,13 +50,19 @@ sudo systemctl restart docker
 ### First Build
 
 ```
-sudo chown 999:999 crawler/dist
 sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml build
+
+sudo chown 999:999 crawler/dist
 sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml run --rm crawler npm run build
+
+touch web/next-env.d.ts
+sudo chown 1000:1000 web/next-env.d.ts
 sudo docker compose -f docker/compose/base.yml -f docker/compose/prod.yml run --rm web npm run build
 ```
 
 999 is the container "crawler" user "pptruser".
+
+1000 is the container "web" user "node".
 
 ### Cert
 
