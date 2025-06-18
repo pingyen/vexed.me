@@ -55,8 +55,6 @@ const fetchContent = async (url: string, method: string | undefined) => {
         errs.length > 0 ?
           reject(errs.join('\n')) :
           resolve(outs.join(''));
-
-        proc.kill();
       });
     });
   }
