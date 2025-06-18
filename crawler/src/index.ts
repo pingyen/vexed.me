@@ -51,7 +51,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
       proc.stdout.on('data', data => { outs.push(data); });
       proc.stderr.on('data', data => { errs.push(data); });
 
-      proc.on('exit', function () {
+      proc.on('exit', () => {
         errs.length > 0 ?
           reject(errs.join('\n')) :
           resolve(outs.join(''));
