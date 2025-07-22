@@ -9,7 +9,13 @@ export default function Client() {
   const [days, setDays] = useState<'' | number>(1);
 
   const startInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    let value = e.target.value;
+
+    const result = value.match(/(\d{4})(\d{2})(\d{2})/);
+
+    if (result !== null) {
+      value = `${result[1]}-${result[2]}-${result[3]}`;
+    }
 
     setStart(value);
 
@@ -34,7 +40,13 @@ export default function Client() {
   };
 
   const endInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    let value = e.target.value;
+
+    const result = value.match(/(\d{4})(\d{2})(\d{2})/);
+
+    if (result !== null) {
+      value = `${result[1]}-${result[2]}-${result[3]}`;
+    }
 
     setEnd(value);
 
