@@ -150,7 +150,9 @@ const fetchContent = async (url: string, method: string | undefined) => {
         } catch (e) {
           console.warn(e, key, xml);
         }
-      };
+
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
     }
 
     console.log('gatherUrls() end');
@@ -312,6 +314,8 @@ const fetchContent = async (url: string, method: string | undefined) => {
       } catch (e) {
         console.warn(e, url, map);
       }
+
+      await new Promise(resolve => setTimeout(resolve, 2000));
     };
 
     console.log('crawlCandidates() end');
