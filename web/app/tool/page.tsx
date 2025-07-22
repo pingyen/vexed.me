@@ -11,6 +11,7 @@ export default function Page() {
       <h1 className="m-3 text-4xl font-bold">Vexed&apos;s Online Tools</h1>
       <ul className="ml-6 [&>li]:m-3 [&>li]:list-disc">
         <li><Link href="/tool/resizeimage">一次調整多張圖片寬高</Link></li>
+        <li><Link href="/tool/svg2image">一次轉換多張 SVG 為 JPG 、 PNG 或 WebP</Link></li>
         <li><Link href="/tool/simp2trad">一次轉換多個簡體中文純文字檔至繁體中文</Link></li>
         <li><Link href="/tool/zhuyin">注音忘記切換輸入法亂碼翻譯器</Link></li>
         <li><Link href="/tool/whatday">這天星期幾？</Link></li>
