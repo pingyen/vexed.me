@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import Ad from '../../../components/ad';
 
 const days = [
