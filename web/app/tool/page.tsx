@@ -17,6 +17,7 @@ export default function Page() {
         <li><Link href="/tool/whatday">這天星期幾？</Link></li>
         <li><Link href="/tool/days">日期距離計算機</Link></li>
         <li><Link href="/tool/timestamp">Unix Timestamp 與時間日期轉換</Link></li>
+        <li><Link href="/tool/now">現在時間</Link></li>
         <li><Link href="/tool/urlencode">網址編碼解碼</Link></li>
         <li><Link href="/tool/screen">螢幕尺寸寬高面積對角線長換算</Link></li>
         <li><Link href="/tool/crxdl">下載 Chrome Extension</Link></li>
