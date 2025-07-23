@@ -22,6 +22,7 @@ export default function Page() {
           <li><a href="/realtime" target="_blank">Taiwan Realtime News</a></li>
           <li><a href="/food" target="_blank">Food</a></li>
           <li><a href="/tool" target="_blank">Tools</a></li>
+          <li><a href="/famiice" target="_blank">Fami!ce</a></li>
       </ul>
       <ul>
           <li><a href="https://github.com/pingyen" target="_blank" >GitHub</a></li>
