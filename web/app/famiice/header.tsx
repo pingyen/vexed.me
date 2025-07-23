@@ -21,13 +21,13 @@ export default function Client(
         </ul>
       </nav>
       {button !== undefined &&
-        <button className='text-xs ml-2' onClick={button.click}>{button.text}</button>}
-      <label className='text-xs ml-2'>
-        <input type="checkbox" className='align-text-bottom mr-1' onChange={twoFlavorsChange} />
+        <button className='text-sm ml-2 pt-4 pb-3 active:scale-95' onClick={button.click}>{button.text}</button>}
+      <label className='text-sm ml-2 pt-4 pb-3 active:scale-95'>
+        <input type="checkbox" className='align-[-2px] mr-1' onChange={twoFlavorsChange} />
         雙口味
       </label>
-      <label className='text-xs ml-2'>
-        <input type="checkbox" className='align-text-bottom mr-1' onChange={specialShapeChange} />
+      <label className='text-sm ml-2 pt-4 pb-3 active:scale-95'>
+        <input type="checkbox" className='align-[-2px] mr-1' onChange={specialShapeChange} />
         特殊造型
       </label>
     </header>
