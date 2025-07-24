@@ -24,21 +24,6 @@ export default function Client() {
     const period = (elements.namedItem('period') as HTMLInputElement).value;
     const annualRate = parseFloat((elements.namedItem('annualRate') as HTMLInputElement).value) / 100;
 
-    if (isNaN(initialAmount) || initialAmount < 0) {
-      alert('請輸入有效的初始投入金額');
-      return;
-    }
-
-    if (isNaN(periodicAmount) || periodicAmount < 0) {
-      alert('請輸入有效的定期投入金額');
-      return;
-    }
-
-    if (isNaN(annualRate) || annualRate < 0) {
-      alert('請輸入有效的年利率');
-      return;
-    }
-
     const periodsPerYear = period === 'monthly' ? 12 : 1;
     const ratePerPeriod = annualRate / periodsPerYear;
 
@@ -47,10 +32,16 @@ export default function Client() {
     for (let year = 1; year <= 50; ++year) {
       const totalPeriods = year * periodsPerYear;
 
-      const initialFutureValue = initialAmount * Math.pow(1 + ratePerPeriod, totalPeriods);
+      let initialFutureValue;
+      let periodicFutureValue;
 
-      const periodicFutureValue = periodicAmount *
-        ((Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod);
+      if (ratePerPeriod === 0) {
+        initialFutureValue = initialAmount;
+        periodicFutureValue = periodicAmount * totalPeriods;
+      } else {
+        initialFutureValue = initialAmount * Math.pow(1 + ratePerPeriod, totalPeriods);
+        periodicFutureValue = periodicAmount * ((Math.pow(1 + ratePerPeriod, totalPeriods) - 1) / ratePerPeriod);
+      }
 
       const totalAmount = initialFutureValue + periodicFutureValue;
       const principal = initialAmount + (periodicAmount * totalPeriods);
@@ -81,7 +72,6 @@ export default function Client() {
             type="number"
             name="initialAmount"
             defaultValue="0"
-            min="0"
             step="1"
             required
           />
@@ -92,7 +82,6 @@ export default function Client() {
             type="number"
             name="periodicAmount"
             defaultValue="3000"
-            min="0"
             step="1"
             required
           />
@@ -127,7 +116,6 @@ export default function Client() {
             type="number"
             name="annualRate"
             defaultValue="5"
-            min="0"
             step="0.01"
             required
           />
