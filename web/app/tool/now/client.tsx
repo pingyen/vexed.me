@@ -16,9 +16,15 @@ const formatDate = (date: Date) => {
   return `${year}-${month}-${day}`;
 };
 
+const formatDay = (date: Date) => {
+  const days = ['日', '一', '二', '三', '四', '五', '六'];
+  return `星期${days[date.getDay()]}`;
+};
+
 export default function Client() {
   const [time, setTime] = useState('');
   const [date, setDate] = useState('');
+  const [day, setDay] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,6 +33,7 @@ export default function Client() {
       document.title = t;
       setTime(t);
       setDate(formatDate(d));
+      setDay(formatDay(d));
     }, 100);
 
     return () => clearInterval(interval);
@@ -38,6 +45,7 @@ export default function Client() {
       <main className="font-mono text-center">
         <h1 className='text-7xl sm:text-9xl py-24'>{time}</h1>
         <h2 className='text-2xl sm:text-4xl'>{date}</h2>
+        <h3 className='text-xl sm:text-2xl py-1'>{day}</h3>
       </main>
     </>
   );
