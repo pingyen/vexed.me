@@ -58,16 +58,24 @@ export default function Client(
     });
   }, [data, sortState]);
 
+  const formatDistance = (distance: number) => {
+    return distance < 1 ?
+      `${(distance * 1000).toFixed(0)} 公尺` :
+      `${distance.toFixed(2)} 公里`;
+  };
+
   return <>
     <Header
       button={sortState === SortState.UNSORTED ? { click: () => { setSortState(SortState.SORTING) }, text: '以距離排序' } : undefined}
       twoFlavorsChange={e => { setTwoFlavorsOnly(e.target.checked); }}
       specialShapeChange={e => { setSpecialShapeOnly(e.target.checked); }}/>
     <main>
-      {items.map(({ name, address, twoFlavors, specialShape }, index) =>
+      {items.map(({ name, address, twoFlavors, specialShape, distance }, index) =>
         (twoFlavorsOnly === true && twoFlavors === false) || (specialShapeOnly  === true && specialShape === false) ? null :
           <article key={index} className={`m-3 p-4 border rounded-sm shadow-custom ${sortState === SortState.SORTING && 'animate-pulse'}`}>
             <h2 className="mb-2 text-2xl font-bold"><a className="text-[#1a0dab]" href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} target="_blank">{name}</a></h2>
+            {distance !== undefined &&
+              <p className="mb-2">{formatDistance(distance)}</p>}
             {twoFlavors === true && <p className="mb-2">雙口味</p>}
             {specialShape === true && <p className="mb-2">特殊造型</p>}
             <p>{address}</p>
