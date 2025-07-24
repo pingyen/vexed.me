@@ -54,13 +54,21 @@ export default function Client(
     });
   }, [data, sortState]);
 
+  const formatDistance = (distance: number) => {
+    return distance < 1 ?
+      `${(distance * 1000).toFixed(0)} 公尺` :
+      `${distance.toFixed(2)} 公里`;
+  };
+
   return <>
     <Header button={sortState === SortState.UNSORTED ? { click: () => { setSortState(SortState.SORTING) }, text: '以距離排序' } : undefined} />
     <main>
-      {items.map(({ name, description }, index) =>
+      {items.map(({ name, description, distance }, index) =>
         <article key={index} className={`m-3 p-4 border rounded-sm shadow-custom ${sortState === SortState.SORTING && 'animate-pulse'}`}>
-          <h2 className="mb-4 text-2xl font-bold"><a className="text-[#1a0dab]" href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} target="_blank">{name}</a></h2>
-          <pre className="leading-4">{description}</pre>
+          <h2 className="mb-2 text-2xl font-bold"><a className="text-[#1a0dab]" href={`https://www.google.com/search?q=${encodeURIComponent(name)}`} target="_blank">{name}</a></h2>
+          {distance !== undefined &&
+            <p className="mb-3">{formatDistance(distance)}</p>}
+          <pre className="mt-3 leading-4">{description}</pre>
         </article>
       )}
     </main>
