@@ -34,8 +34,11 @@ export default function Client() {
 
   return (
     <>
-      <h1 className='font-mono text-center text-7xl sm:text-9xl my-24'>{time}</h1>
-      <h2 className='font-mono text-center text-2xl sm:text-4xl'>{date}</h2>
+      <style jsx global>{'body { background: black; color: wheat }'}</style>
+      <main className="font-mono text-center">
+        <h1 className='text-7xl sm:text-9xl py-24'>{time}</h1>
+        <h2 className='text-2xl sm:text-4xl'>{date}</h2>
+      </main>
     </>
   );
 }
