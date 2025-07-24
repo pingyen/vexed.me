@@ -162,12 +162,12 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
           return <Fragment key={index}>
             {adId !== undefined &&
               <Ad id={adId} classes={adClasses} />}
-            <article className="bg-white m-3 p-4 border rounded-sm shadow-custom">
+            <article className="bg-white dark:bg-black m-3 p-4 border rounded-sm shadow-custom">
               <p>
                 <a href={source.url} target="_blank">{source.name}</a>
                 <Time timestamp={timestamp} />
               </p>
-              <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] scroll-mt-14" href={url} target="_blank">{title}</a></h2>
+              <h2 className="text-xl font-bold mt-1 mb-2"><a className="text-[#1a0dab] dark:text-white scroll-mt-14" href={url} target="_blank">{title}</a></h2>
               {image !== undefined &&
                 <Img src={image} alt={title} />}
               {description !== undefined &&

@@ -29,5 +29,10 @@ export default function Client(
     });
   }, []);
 
-  return <style jsx global>{`body { background: #DDD }`}</style>;
+  return <style jsx global>{`
+    body { background: #DDD }
+    @media (prefers-color-scheme: dark) {
+      body { background: #000; color: #fff }
+    }
+  `}</style>;
 }
