@@ -24,7 +24,7 @@ export default function Client(
       return;
     }
 
-    document.querySelectorAll('main > article a').forEach(anchor => {
+    document.querySelectorAll('main > a:has(> article)').forEach(anchor => {
       anchor.removeAttribute('target');
     });
   }, []);
