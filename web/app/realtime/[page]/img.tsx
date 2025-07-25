@@ -21,5 +21,5 @@ export default function Img({ src, alt }: { src: string, alt: string }) {
     }, true);
   }, []);
 
-  return <img ref={imgRef} src={src} alt={alt} className="block my-2 w-full max-w-sm" />; // eslint-disable-line @next/next/no-img-element
+  return <img referrerPolicy="no-referrer" ref={imgRef} src={src} alt={alt} className="block my-2 w-full max-w-sm" />; // eslint-disable-line @next/next/no-img-element
 }
