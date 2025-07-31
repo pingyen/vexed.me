@@ -3,6 +3,14 @@
 import { useState, useEffect } from 'react';
 import Ad from '../../../components/ad';
 
+const formatDate = (value: string): string => {
+  const result = value.match(/(\d{4})-?(\d{2})-?(\d{2})/);
+
+  return result !== null
+    ? `${result[1]}-${result[2]}-${result[3]}`
+    : value;
+}
+
 export default function Client() {
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
@@ -11,21 +19,15 @@ export default function Client() {
   const startInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
 
-    const result = value.match(/(\d{4})(\d{2})(\d{2})/);
-
-    if (result !== null) {
-      value = `${result[1]}-${result[2]}-${result[3]}`;
-    }
-
     setStart(value);
 
-    const startTime = Date.parse(value);
+    const startTime = Date.parse(formatDate(value));
 
     if (isNaN(startTime) === true) {
       return;
     }
 
-    const endTime = Date.parse(end);
+    const endTime = Date.parse(formatDate(end));
 
     if (isNaN(endTime) === true) {
       if (days === '') {
@@ -42,21 +44,15 @@ export default function Client() {
   const endInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
 
-    const result = value.match(/(\d{4})(\d{2})(\d{2})/);
-
-    if (result !== null) {
-      value = `${result[1]}-${result[2]}-${result[3]}`;
-    }
-
     setEnd(value);
 
-    const endTime = Date.parse(value);
+    const endTime = Date.parse(formatDate(value));
 
     if (isNaN(endTime) === true) {
       return;
     }
 
-    let startTime = Date.parse(start);
+    let startTime = Date.parse(formatDate(start));
 
     if (isNaN(startTime) === true) {
       const now = Date.now();
