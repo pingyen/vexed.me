@@ -25,6 +25,7 @@ export default function Client() {
     const sec = parseInt(value);
 
     if (isNaN(sec) === true) {
+      setDate('');
       return;
     }
 
@@ -51,6 +52,7 @@ export default function Client() {
     let ms = Date.parse(value);
 
     if (isNaN(ms) === true) {
+      setTime('');
       return;
     }
 
