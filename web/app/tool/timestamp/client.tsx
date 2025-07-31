@@ -41,15 +41,14 @@ export default function Client() {
   const dateInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
 
-    const result = value.match(/(\d{4})(\d{2})(\d{2})/);
-
-    if (result !== null) {
-      value = `${result[1]}-${result[2]}-${result[3]}`;
-    }
-
     setDate(value);
 
-    let ms = Date.parse(value);
+    const result = value.trim().match(/^(\d{4})-?(\d{2})-?(\d{2})$/);
+
+    let ms = Date.parse(
+      result !== null ?
+        `${result[1]}-${result[2]}-${result[3]}` :
+        value);
 
     if (isNaN(ms) === true) {
       setTime('');
@@ -57,7 +56,7 @@ export default function Client() {
     }
 
     if (timezone === 'utc' &&
-        /^\d{4}-\d{2}-\d{2}$/.test(value) === false) {
+        result === null) {
       ms += timeOffset;
     }
 
