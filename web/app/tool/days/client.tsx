@@ -24,6 +24,7 @@ export default function Client() {
     const startTime = Date.parse(formatDate(value));
 
     if (isNaN(startTime) === true) {
+      setDays('');
       return;
     }
 
@@ -49,6 +50,7 @@ export default function Client() {
     const endTime = Date.parse(formatDate(value));
 
     if (isNaN(endTime) === true) {
+      setDays('');
       return;
     }
 
