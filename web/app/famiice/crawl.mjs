@@ -59,7 +59,13 @@ for (const city of cities) {
 }
 
 data.sort((a, b) => {
-  return a.zipCode - b.zipCode;
+  const diff = a.zipCode - b.zipCode;
+
+  if (diff === 0) {
+    return b.latitude - a.latitude;
+  }
+
+  return diff;
 });
 
 writeFileSync('./data.json', JSON.stringify(data, null, '  '));
