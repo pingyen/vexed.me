@@ -24,6 +24,22 @@ export default function Client(
   const [sortState, setSortState] = useState(items[0]?.distance !== undefined ? SortState.SORTED : SortState.UNSORTED);
 
   useEffect(() => {
+    const permissions = navigator.permissions;
+
+    if (permissions === undefined ||
+        permissions.query === undefined) {
+      return;
+    }
+
+    permissions.query({ name: 'geolocation' })
+      .then(result => {
+        if (result.state === 'granted') {
+          setSortState(SortState.SORTING);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
     if (sortState !== SortState.SORTING) {
       return;
     }

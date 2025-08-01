@@ -28,6 +28,22 @@ export default function Client(
   const [specialShapeOnly, setSpecialShapeOnly] = useState(false);
 
   useEffect(() => {
+    const permissions = navigator.permissions;
+
+    if (permissions === undefined ||
+        permissions.query === undefined) {
+      return;
+    }
+
+    permissions.query({ name: 'geolocation' })
+      .then(result => {
+        if (result.state === 'granted') {
+          setSortState(SortState.SORTING);
+        }
+      });
+  }, []);
+
+  useEffect(() => {
     if (sortState !== SortState.SORTING) {
       return;
     }

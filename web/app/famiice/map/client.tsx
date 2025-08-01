@@ -75,7 +75,7 @@ export default function Client(
     current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
-  const buttonClick = () => {
+  const centerOnLocation = () => {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
       const position = { lat: coords.latitude, lng: coords.longitude }
@@ -86,6 +86,22 @@ export default function Client(
       alert('請給予位置權限');
     });
   };
+
+  useEffect(() => {
+    const permissions = navigator.permissions;
+
+    if (permissions === undefined ||
+        permissions.query === undefined) {
+      return;
+    }
+
+    permissions.query({ name: 'geolocation' })
+      .then(result => {
+        if (result.state === 'granted') {
+          centerOnLocation();
+        }
+      });
+  }, []);
 
   const cameraChanged = (e: MapCameraChangedEvent) => {
     setCamera(e.detail);
@@ -109,7 +125,7 @@ export default function Client(
 
   return <>
     <Header
-      button={{ click: buttonClick, text: '以目前位置為中心' }}
+      button={{ click: centerOnLocation, text: '以目前位置為中心' }}
       twoFlavorsChange={e => { setTwoFlavorsOnly(e.target.checked); }}
       specialShapeChange={e => { setSpecialShapeOnly(e.target.checked); }}/>
     <main ref={mainRef}>
