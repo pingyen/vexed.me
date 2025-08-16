@@ -163,12 +163,12 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
             {adId !== undefined &&
               <Ad id={adId} classes={adClasses} />}
             <a href={url} target="_blank">
-              <article className="bg-white dark:bg-black m-3 p-4 border rounded-sm shadow-custom">
+              <article className="bg-white dark:bg-[#0d1117] m-3 p-4 border rounded-sm shadow-custom">
                 <p>
                   <span>{source.name}</span>
                   <Time timestamp={timestamp} />
                 </p>
-                <h2 className="text-xl font-bold mt-1 mb-2 text-[#1a0dab] dark:text-white scroll-mt-14">{title}</h2>
+                <h2 className="text-xl font-bold mt-1 mb-2 text-[#1a0dab] dark:text-[#f0f6fc] scroll-mt-14">{title}</h2>
                 {image !== undefined &&
                   <Img src={image} alt={title} />}
                 {description !== undefined &&

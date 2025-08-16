@@ -32,7 +32,7 @@ export default function Client(
   return <style jsx global>{`
     body { background: #DDD }
     @media (prefers-color-scheme: dark) {
-      body { background: #000; color: #fff }
+      body { background: #0d1117; color: #f0f6fc }
     }
   `}</style>;
 }
