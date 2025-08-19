@@ -1,6 +1,20 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/realtime/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=180'
+          },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     return [
       {
