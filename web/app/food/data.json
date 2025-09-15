@@ -12,6 +12,12 @@
     "description": "烤雞腿\n\n餛飩麵\n\n桂花荔枝冰"
   },
   {
+    "name": "保安藥房",
+    "latitude": 25.16972266054852,
+    "longitude": 121.44047879416051,
+    "description": "龜苓茶"
+  },
+  {
     "name": "東榮 6 號 小巻、魩仔魚",
     "latitude": 25.1688251,
     "longitude": 121.4425736,
@@ -1138,6 +1144,12 @@
     "latitude": 25.049306762841205,
     "longitude": 121.51719349593564,
     "description": "角切鐵板牛排 加起司\n\nM7 厚切肩胛菲力\n\n牛五花肉盤\n\nB3"
+  },
+  {
+    "name": "雪嶽山 京站時尚廣場店",
+    "latitude": 25.0493012,
+    "longitude": 121.51718242883557,
+    "description": "銅盤烤肉 羊肉"
   },
   {
     "name": "Supreme Salmon 美威鮭魚 京站店",
