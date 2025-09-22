@@ -168,14 +168,14 @@
     "url": "https://www.upmedia.mg",
     "xmls": [
       {
-        "url": "https://www.upmedia.mg/sitemap_news_0504.php",
+        "url": "https://www.upmedia.mg/sitemap.xml",
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "lastmod"
         },
         "pathnamePrefixes": [
-          "/news_info.php"
+          "/"
         ]
       }
     ],
