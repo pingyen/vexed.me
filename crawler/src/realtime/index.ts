@@ -63,7 +63,7 @@ const gatherUrls = async () => {
             const url = new URL(textContent);
             const pathname = url.pathname;
 
-            if (xml.pathnamePrefixes.some(item => pathname.startsWith(item)) === false) {
+            if (pathname === '/' || xml.pathnamePrefixes.some(item => pathname.startsWith(item)) === false) {
               /* console.warn('realtime pathname mismatch', key, xml, url); */
               return;
             }
