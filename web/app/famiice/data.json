@@ -1377,6 +1377,15 @@
     "specialShape": false
   },
   {
+    "name": "全家台興店",
+    "address": "台北市大安區長興街５０號",
+    "zipCode": 106,
+    "latitude": 25.01651,
+    "longitude": 121.544954,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家台科店",
     "address": "台北市大安區基隆路４段４３號地下一樓第三餐廳",
     "zipCode": 106,
@@ -2394,6 +2403,15 @@
     "specialShape": false
   },
   {
+    "name": "全家陽鑫店",
+    "address": "台北市內湖區瑞湖街８０號１樓Ｒ３、Ｒ４",
+    "zipCode": 114,
+    "latitude": 25.07258,
+    "longitude": 121.575962,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家湖東店",
     "address": "台北市內湖區康樂街１１０巷１５號",
     "zipCode": 114,
@@ -2473,15 +2491,6 @@
     "longitude": 121.58419,
     "twoFlavors": true,
     "specialShape": true
-  },
-  {
-    "name": "全家行善公宅店",
-    "address": "台北市內湖區行善路２６２號１樓",
-    "zipCode": 114,
-    "latitude": 25.060381,
-    "longitude": 121.581783,
-    "twoFlavors": false,
-    "specialShape": false
   },
   {
     "name": "全家台塑店",
@@ -2741,15 +2750,6 @@
     "zipCode": 116,
     "latitude": 24.995174,
     "longitude": 121.541577,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
-    "name": "全家萬慶店",
-    "address": "台北市文山區景福街２３０巷１號一樓",
-    "zipCode": 116,
-    "latitude": 24.993664,
-    "longitude": 121.539152,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -3218,7 +3218,7 @@
     "zipCode": 220,
     "latitude": 25.03148,
     "longitude": 121.470944,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
@@ -3470,8 +3470,8 @@
     "zipCode": 220,
     "latitude": 25.015983,
     "longitude": 121.479008,
-    "twoFlavors": false,
-    "specialShape": false
+    "twoFlavors": true,
+    "specialShape": true
   },
   {
     "name": "全家板橋雙城店",
@@ -5270,7 +5270,7 @@
     "zipCode": 237,
     "latitude": 24.945158,
     "longitude": 121.373141,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
@@ -5513,7 +5513,7 @@
     "zipCode": 239,
     "latitude": 24.95258,
     "longitude": 121.357401,
-    "twoFlavors": false,
+    "twoFlavors": true,
     "specialShape": false
   },
   {
@@ -5751,15 +5751,6 @@
     "specialShape": true
   },
   {
-    "name": "全家三重華泰店",
-    "address": "新北市三重區中華路５３號１樓",
-    "zipCode": 241,
-    "latitude": 25.062159,
-    "longitude": 121.483548,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家三重天台店",
     "address": "新北市三重區重新路二段７８號",
     "zipCode": 241,
@@ -5801,6 +5792,15 @@
     "zipCode": 241,
     "latitude": 25.05892773,
     "longitude": 121.48687773,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家三重永春店",
+    "address": "新北市三重區中正南路１１７號１樓",
+    "zipCode": 241,
+    "latitude": 25.057402,
+    "longitude": 121.493957,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -5972,7 +5972,7 @@
     "zipCode": 242,
     "latitude": 25.048435,
     "longitude": 121.458263,
-    "twoFlavors": false,
+    "twoFlavors": true,
     "specialShape": false
   },
   {
@@ -6271,15 +6271,6 @@
     "longitude": 121.413369,
     "twoFlavors": true,
     "specialShape": false
-  },
-  {
-    "name": "全家泰山工專店",
-    "address": "新北市泰山區明志路三段１７０號",
-    "zipCode": 243,
-    "latitude": 25.039171,
-    "longitude": 121.42425,
-    "twoFlavors": true,
-    "specialShape": true
   },
   {
     "name": "全家林口麗林店",
@@ -8541,6 +8532,15 @@
     "specialShape": true
   },
   {
+    "name": "全家中壢新吉園店",
+    "address": "桃園市中壢區長春路８８號１樓",
+    "zipCode": 320,
+    "latitude": 24.978495,
+    "longitude": 121.248409,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家中壢城章店",
     "address": "桃園市中壢區成章一街１５６號",
     "zipCode": 320,
@@ -8665,15 +8665,6 @@
     "longitude": 121.239081,
     "twoFlavors": true,
     "specialShape": true
-  },
-  {
-    "name": "全家中壢中北店",
-    "address": "桃園市中壢區中北路３１號",
-    "zipCode": 320,
-    "latitude": 24.956029,
-    "longitude": 121.23636,
-    "twoFlavors": false,
-    "specialShape": false
   },
   {
     "name": "全家中壢金央店",
@@ -8973,15 +8964,6 @@
     "specialShape": false
   },
   {
-    "name": "全家平鎮中興店",
-    "address": "桃園市平鎮區中興路平鎮段３５７號１樓",
-    "zipCode": 324,
-    "latitude": 24.902274,
-    "longitude": 121.191744,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家平鎮南豐店",
     "address": "桃園市平鎮區南豐路１１２號１樓",
     "zipCode": 324,
@@ -9009,21 +8991,21 @@
     "specialShape": true
   },
   {
+    "name": "全家龍潭武漢店",
+    "address": "桃園市龍潭區中興路３３４號１樓",
+    "zipCode": 325,
+    "latitude": 24.873782,
+    "longitude": 121.232579,
+    "twoFlavors": true,
+    "specialShape": true
+  },
+  {
     "name": "全家龍潭車旅店",
     "address": "桃園市龍潭區公園路５０號",
     "zipCode": 325,
     "latitude": 24.867432,
     "longitude": 121.218414,
     "twoFlavors": false,
-    "specialShape": true
-  },
-  {
-    "name": "全家龍潭龍華店",
-    "address": "桃園市龍潭區北龍路１５３號１樓",
-    "zipCode": 325,
-    "latitude": 24.866678,
-    "longitude": 121.214744,
-    "twoFlavors": true,
     "specialShape": true
   },
   {
@@ -9360,15 +9342,6 @@
     "specialShape": false
   },
   {
-    "name": "全家桃園帝國店",
-    "address": "桃園市桃園區大興西路一段２０８號",
-    "zipCode": 330,
-    "latitude": 25.013638,
-    "longitude": 121.302761,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家桃園御賞店",
     "address": "桃園市桃園區寶慶里大興西路二段１２８號１樓",
     "zipCode": 330,
@@ -9502,6 +9475,15 @@
     "longitude": 121.304369,
     "twoFlavors": false,
     "specialShape": true
+  },
+  {
+    "name": "全家桃園國際店",
+    "address": "桃園市桃園區國際路二段５１號",
+    "zipCode": 330,
+    "latitude": 24.991497,
+    "longitude": 121.288271,
+    "twoFlavors": false,
+    "specialShape": false
   },
   {
     "name": "全家桃園百貨店",
@@ -9819,20 +9801,20 @@
     "specialShape": false
   },
   {
-    "name": "全家八德金和店",
-    "address": "桃園市八德區銀和街６３號加地下室",
-    "zipCode": 334,
-    "latitude": 24.956025,
-    "longitude": 121.29739,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家八德銀和店",
     "address": "桃園市八德區銀和街２９＆３１號",
     "zipCode": 334,
     "latitude": 24.9555901205842,
     "longitude": 121.296363321708,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家八德貴族店",
+    "address": "桃園市八德區介壽路二段３０９號",
+    "zipCode": 334,
+    "latitude": 24.949324,
+    "longitude": 121.297978,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -9945,15 +9927,6 @@
     "specialShape": true
   },
   {
-    "name": "全家大園蓮園店",
-    "address": "桃園市大園區大觀路６０２號",
-    "zipCode": 337,
-    "latitude": 25.062329,
-    "longitude": 121.175656,
-    "twoFlavors": false,
-    "specialShape": true
-  },
-  {
     "name": "全家大園環西店",
     "address": "桃園市大園區環區西路７９號",
     "zipCode": 337,
@@ -9996,6 +9969,15 @@
     "latitude": 25.084752,
     "longitude": 121.28626,
     "twoFlavors": true,
+    "specialShape": true
+  },
+  {
+    "name": "全家蘆竹山鼻店",
+    "address": "桃園市蘆竹區機捷路二段７８６號",
+    "zipCode": 338,
+    "latitude": 25.08104,
+    "longitude": 121.288234,
+    "twoFlavors": false,
     "specialShape": true
   },
   {
@@ -11052,6 +11034,15 @@
     "specialShape": true
   },
   {
+    "name": "全家台中長青店",
+    "address": "台中市北區武昌路１５２號",
+    "zipCode": 404,
+    "latitude": 24.168689,
+    "longitude": 120.670932,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家台中漢口店",
     "address": "台中市北區賴厝里漢口路四段５６，５８，６０號１樓",
     "zipCode": 404,
@@ -11624,8 +11615,8 @@
     "zipCode": 407,
     "latitude": 24.189566,
     "longitude": 120.615308,
-    "twoFlavors": true,
-    "specialShape": true
+    "twoFlavors": false,
+    "specialShape": false
   },
   {
     "name": "全家台中新福瑞店",
@@ -11805,15 +11796,6 @@
     "latitude": 24.171149,
     "longitude": 120.650129,
     "twoFlavors": true,
-    "specialShape": true
-  },
-  {
-    "name": "全家台中登峰店",
-    "address": "台中市西屯區至善里臺灣大道３段６６０號",
-    "zipCode": 407,
-    "latitude": 24.170748,
-    "longitude": 120.637847,
-    "twoFlavors": false,
     "specialShape": true
   },
   {
@@ -13226,8 +13208,8 @@
     "zipCode": 432,
     "latitude": 24.15433,
     "longitude": 120.540089,
-    "twoFlavors": false,
-    "specialShape": false
+    "twoFlavors": true,
+    "specialShape": true
   },
   {
     "name": "全家大肚火車頭店",
@@ -13363,6 +13345,15 @@
     "longitude": 120.568939,
     "twoFlavors": false,
     "specialShape": false
+  },
+  {
+    "name": "全家沙鹿森美店",
+    "address": "台中市沙鹿區保成路１６１號",
+    "zipCode": 433,
+    "latitude": 24.211682,
+    "longitude": 120.565622,
+    "twoFlavors": true,
+    "specialShape": true
   },
   {
     "name": "全家沙鹿正英店",
@@ -14400,6 +14391,15 @@
     "specialShape": true
   },
   {
+    "name": "全家田中豐收店",
+    "address": "彰化縣田中鎮民族街１８６號",
+    "zipCode": 520,
+    "latitude": 23.856821,
+    "longitude": 120.581934,
+    "twoFlavors": false,
+    "specialShape": true
+  },
+  {
     "name": "全家北斗冬瓜寮店",
     "address": "彰化縣北斗鎮地政路１５０號",
     "zipCode": 521,
@@ -15048,15 +15048,6 @@
     "specialShape": false
   },
   {
-    "name": "全家嘉義祥鳳店",
-    "address": "嘉義市東區吳鳳北路１１２號１Ｆ",
-    "zipCode": 600,
-    "latitude": 23.477186,
-    "longitude": 120.453614,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家嘉義鑫愛店",
     "address": "嘉義市西區仁愛路５０８號",
     "zipCode": 600,
@@ -15480,6 +15471,15 @@
     "specialShape": false
   },
   {
+    "name": "全家虎尾高捷店",
+    "address": "雲林縣虎尾鎮墾地里２９鄰學府一路３８０號１樓",
+    "zipCode": 632,
+    "latitude": 23.737886,
+    "longitude": 120.418977,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家虎尾萬寶店",
     "address": "雲林縣虎尾鎮廉使里２４鄰虎興南路６０號",
     "zipCode": 632,
@@ -15513,7 +15513,7 @@
     "latitude": 23.711721,
     "longitude": 120.436257,
     "twoFlavors": true,
-    "specialShape": false
+    "specialShape": true
   },
   {
     "name": "全家虎尾新興店",
@@ -15841,7 +15841,7 @@
   },
   {
     "name": "全家西螺新社店",
-    "address": "雲林縣西螺鎮新豐里福來路８８號",
+    "address": "雲林縣西螺鎮新豐里福來路９０號",
     "zipCode": 648,
     "latitude": 23.786805,
     "longitude": 120.447629,
@@ -16306,6 +16306,15 @@
     "longitude": 120.200045,
     "twoFlavors": true,
     "specialShape": true
+  },
+  {
+    "name": "全家台南誌港店",
+    "address": "台南市北區大港街１０６號",
+    "zipCode": 704,
+    "latitude": 23.013879,
+    "longitude": 120.190919,
+    "twoFlavors": false,
+    "specialShape": false
   },
   {
     "name": "全家台南育德店",
@@ -17044,15 +17053,6 @@
     "longitude": 120.309814,
     "twoFlavors": true,
     "specialShape": true
-  },
-  {
-    "name": "全家新營帝寶店",
-    "address": "台南市新營區復興路８６７號１樓",
-    "zipCode": 730,
-    "latitude": 23.308726,
-    "longitude": 120.285556,
-    "twoFlavors": false,
-    "specialShape": false
   },
   {
     "name": "全家新營南新店",
@@ -18693,15 +18693,6 @@
     "specialShape": false
   },
   {
-    "name": "全家岡山壽峰店",
-    "address": "高雄市岡山區前峰路１３０－４號",
-    "zipCode": 820,
-    "latitude": 22.796938,
-    "longitude": 120.28563,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家岡山平和店",
     "address": "高雄市岡山區岡山路２７７之１號１樓",
     "zipCode": 820,
@@ -18716,6 +18707,15 @@
     "zipCode": 820,
     "latitude": 22.794084,
     "longitude": 120.284306,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家岡山岡燕店",
+    "address": "高雄市岡山區岡燕路２８９號一至二樓",
+    "zipCode": 820,
+    "latitude": 22.791968,
+    "longitude": 120.303437,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -19143,6 +19143,15 @@
     "specialShape": true
   },
   {
+    "name": "全家大發四維店",
+    "address": "高雄市大寮區四維路２８６號",
+    "zipCode": 831,
+    "latitude": 22.637049,
+    "longitude": 120.396933,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家大發仁愛店",
     "address": "高雄市大寮區仁愛路２２號",
     "zipCode": 831,
@@ -19355,6 +19364,15 @@
     "zipCode": 852,
     "latitude": 22.874935,
     "longitude": 120.19565,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家澎湖衛中店",
+    "address": "澎湖縣馬公市西衛里西衛１３３號",
+    "zipCode": 880,
+    "latitude": 23.581481,
+    "longitude": 119.580364,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -19692,15 +19710,6 @@
     "specialShape": true
   },
   {
-    "name": "全家屏東大埔店",
-    "address": "屏東縣屏東市民族路３０３號一樓",
-    "zipCode": 900,
-    "latitude": 22.670809,
-    "longitude": 120.481353,
-    "twoFlavors": true,
-    "specialShape": false
-  },
-  {
     "name": "全家屏東長安店",
     "address": "屏東縣屏東市光復路３４８號一樓",
     "zipCode": 900,
@@ -20034,6 +20043,15 @@
     "specialShape": false
   },
   {
+    "name": "全家東港東王店",
+    "address": "屏東縣東港鎮東新里文昌街１７０、１７２號一樓",
+    "zipCode": 928,
+    "latitude": 22.475974539018807,
+    "longitude": 120.4658815641403,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家東港碼頭店",
     "address": "屏東縣東港鎮朝隆路６號",
     "zipCode": 928,
@@ -20250,15 +20268,6 @@
     "specialShape": false
   },
   {
-    "name": "全家台東豐樂店",
-    "address": "台東縣台東市豐樂里正氣北路５２６號一樓",
-    "zipCode": 950,
-    "latitude": 22.7552026,
-    "longitude": 121.1313509,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家台東博愛店",
     "address": "台東縣台東市博愛路４８６號",
     "zipCode": 950,
@@ -20327,15 +20336,6 @@
     "zipCode": 955,
     "latitude": 22.988336,
     "longitude": 121.1418312,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
-    "name": "全家台東鹿野店",
-    "address": "台東縣鹿野鄉鹿野村中華路一段９８號一樓",
-    "zipCode": 955,
-    "latitude": 22.8963656,
-    "longitude": 121.0955484,
     "twoFlavors": false,
     "specialShape": false
   },
