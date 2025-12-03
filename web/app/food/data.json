@@ -1902,6 +1902,12 @@
     "description": "雞肉串燒"
   },
   {
+    "name": "星巴克典藏 DREAM PLAZA 台北",
+    "latitude": 25.039781084940394,
+    "longitude": 121.5654505177405,
+    "description": "松高拾壹號\n\n6 樓"
+  },
+  {
     "name": "龍門客棧餃子館 林森店",
     "latitude": 25.039670061832513,
     "longitude": 121.52305550278753,
@@ -1918,6 +1924,12 @@
     "latitude": 25.0391777,
     "longitude": 121.5255245,
     "description": "清燉牛肉粉絲\n\n清燉過橋粉絲"
+  },
+  {
+    "name": "魚君 信義 A8 店",
+    "latitude": 25.038042760308226,
+    "longitude": 121.56667579846156,
+    "description": "炙燒鮭魚軍艦\n\n鮪魚泥松葉蟹丼\n\nB3"
   },
   {
     "name": "春水堂 中正店",
