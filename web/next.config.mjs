@@ -23,17 +23,17 @@ const nextConfig = {
         permanent: true
       },
       {
-        source: '/realtime/taipei/:slug*',
+        source: '/realtime/taipei/(.*)',
         destination: '/realtime',
         permanent: true
       },
       {
-        source: '/realtime/taipei-:slug*',
+        source: '/realtime/taipei-(.*)',
         destination: '/realtime',
         permanent: true
       },
       {
-        source: '/daily/:slug*',
+        source: '/daily/(.*)',
         destination: '/realtime',
         permanent: true
       },
