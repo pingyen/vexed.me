@@ -12,7 +12,7 @@
     "@next/third-parties": "15.3.0",
     "@vis.gl/react-google-maps": "^1.1.0",
     "jsonp": "^0.2.1",
-    "next": "^15.4.2",
+    "next": "^15.4.8",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "redis": "^4.6.14",
