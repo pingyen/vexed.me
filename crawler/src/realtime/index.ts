@@ -49,9 +49,10 @@ const gatherUrls = async () => {
       try {
         const content = fixXML(await fetchContent(xml.url, method));
         const dom = new JSDOM(content, { contentType: 'text/xml' });
+        const window = dom.window;
         const selectors = xml.selectors;
 
-        dom.window.document.querySelectorAll(selectors.root).forEach(async node => {
+        window.document.querySelectorAll(selectors.root).forEach(async node => {
           const textContent = node.querySelector(selectors.url)?.textContent ?? null;
 
           if (textContent === null) {
@@ -102,6 +103,8 @@ const gatherUrls = async () => {
             console.warn('realtime', e, key, xml, textContent);
           }
         });
+
+        window.close();
       } catch (e) {
         console.warn('realtime', e, key, xml);
       }
@@ -128,7 +131,8 @@ const crawlCandidates = async () => {
     try {
       const content = fixHTML(await fetchContent(url, source.method));
       const dom = new JSDOM(content);
-      const document = dom.window.document;
+      const window = dom.window;
+      const document = window.document;
 
       const jsonLd = (() => {
         for (const script of document.querySelectorAll('script[type="application/ld+json"]')) {
@@ -215,6 +219,8 @@ const crawlCandidates = async () => {
         document.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
         jsonLd.description ||
         undefined;
+
+      window.close();
 
       const cleanTitle = cleanString(title);
       const cleanDescription = typeof description === 'string' ? cleanString(description) : description;
