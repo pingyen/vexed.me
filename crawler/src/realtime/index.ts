@@ -98,7 +98,7 @@ const gatherUrls = async () => {
             };
 
             redis.HSET('realtime:candidates', textContent, JSON.stringify(map));
-            } catch (e) {
+          } catch (e) {
             console.warn('realtime', e, key, xml, textContent);
           }
         });
