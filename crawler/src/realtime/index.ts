@@ -109,7 +109,7 @@ const gatherUrls = async () => {
         console.warn('realtime', e, key, xml);
       }
 
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
 
@@ -119,12 +119,28 @@ const gatherUrls = async () => {
 const crawlCandidates = async () => {
   console.log('realtime crawlCandidates() start');
 
+  const targets = [];
   const candidates = await redis.HGETALL('realtime:candidates');
   const expiry = getExpiry();
-  const articles = new Map();
 
   for (const [url, json] of Object.entries(candidates)) {
     const map = JSON.parse(json);
+
+    if (map.timestamp < expiry) {
+      redis.HDEL('realtime:candidates', url);
+      continue;
+    }
+
+    map.url = url;
+    targets.push(map);
+  }
+
+  targets.sort((a, b) => b.timestamp - a.timestamp);
+
+  const articles = new Map();
+
+  for (const map of targets.slice(0, 400)) {
+    const url = map.url;
     const key: keyof typeof sources = map.source;
     const source: Source = sources[key];
 
@@ -276,7 +292,7 @@ const crawlCandidates = async () => {
       console.warn('realtime', e, url, map);
     }
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
   };
 
   console.log('realtime crawlCandidates() end');

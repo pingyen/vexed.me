@@ -11,7 +11,7 @@ import cron from 'node-cron';
 
   realtime.init(redis);
 
-  cron.schedule('9,19,29,39,49,59 * * * *', (() => {
+  cron.schedule('*/4 * * * *', (() => {
     let crawling = false;
 
     return async () => {
