@@ -179,7 +179,6 @@
         ]
       }
     ],
-    "timeOffset": -28800,
     "method": "curl"
   },
   "ettoday": {
