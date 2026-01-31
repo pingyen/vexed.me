@@ -42,12 +42,6 @@
     "description": "豬腳"
   },
   {
-    "name": "吳記螃蟹羹",
-    "latitude": 25.1285326,
-    "longitude": 121.7428814,
-    "description": "螃蟹羹"
-  },
-  {
     "name": "三明堂",
     "latitude": 25.118231,
     "longitude": 121.532949,
@@ -129,7 +123,7 @@
     "name": "老麵店",
     "latitude": 25.07037274347167,
     "longitude": 121.51164413058616,
-    "description": "黑白切 滷豬肉"
+    "description": "乾麵\n\n黑白切 滷豬肉"
   },
   {
     "name": "英瑛美代子的店",
@@ -201,7 +195,7 @@
     "name": "熊記魷魚羹",
     "latitude": 25.06673377781129,
     "longitude": 121.52910159988794,
-    "description": "嘴邊肉\n\n骨仔肉\n\n燙魷魚\n\n生魷魚羹"
+    "description": "燙魷魚\n\n生魷魚羹\n\n嘴邊肉\n\n骨仔肉"
   },
   {
     "name": "上引水產",
@@ -309,7 +303,7 @@
     "name": "坤哥排骨酥麵",
     "latitude": 25.065284156510458,
     "longitude": 121.5111468449167,
-    "description": "白菜滷\n\n鍋燒烏龍麵\n\n排骨酥麵\n\n豉汁排骨"
+    "description": "白菜滷\n\n鍋燒烏龍麵\n\n花椰菜\n\n豬肝\n\n排骨酥麵\n\n豉汁排骨"
   },
   {
     "name": "日船章魚小丸子 延三店",
@@ -423,7 +417,7 @@
     "name": "延三夜市 林記牛肉麵",
     "latitude": 25.06440959629601,
     "longitude": 121.51102866973119,
-    "description": "牛肉麵\n\n牛筋\n\n干絲\n\n海帶"
+    "description": "牛肚\n\n牛筋\n\n牛肉麵\n\n干絲\n\n海帶"
   },
   {
     "name": "延三夜市 海產 虱目魚腹",
@@ -501,7 +495,7 @@
     "name": "六特製涼麵",
     "latitude": 25.06351529861233,
     "longitude": 121.51125403039623,
-    "description": "舒肥雞胸特製涼麵\n\n味噌湯綜合"
+    "description": "舒肥雞胸特製涼麵 南部口味 白麵\n\n味噌湯綜合"
   },
   {
     "name": "黃大腸煎",
@@ -718,12 +712,6 @@
     "latitude": 25.059341689585864,
     "longitude": 121.61758380718908,
     "description": "虹彩雪酪\n\n香橙雪寶\n\n檸檬雪酪\n\n5 樓"
-  },
-  {
-    "name": "GBA 吉比鮮釀餐廳 南港店",
-    "latitude": 25.059340599381972,
-    "longitude": 121.61758381527683,
-    "description": "小麥愛爾雪酪 南港限定"
   },
   {
     "name": "鶿克米 南港 LaLaport 店",
@@ -2046,12 +2034,6 @@
     "description": "蟹黃湯包\n\n椒鹽豆腐\n\n特製山東燒雞\n\n蔥烤鯽魚"
   },
   {
-    "name": "姥姥酸菜魚 101 店",
-    "latitude": 25.033832188349837,
-    "longitude": 121.5643085001723,
-    "description": "酸菜魚\n\nB1"
-  },
-  {
     "name": "鼎泰豐 新生店",
     "latitude": 25.033817308010207,
     "longitude": 121.53216330373466,
@@ -2295,7 +2277,7 @@
     "name": "春梅餐飲店",
     "latitude": 24.815982606452692,
     "longitude": 121.35134592181659,
-    "description": "蛋餅"
+    "description": "溪蝦"
   },
   {
     "name": "東京純豆腐 新竹 SOGO 店",
