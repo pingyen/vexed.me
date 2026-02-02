@@ -1,7 +1,7 @@
 import { RedisClientType } from 'redis';
 import sources from './sources.json';
 import fetchContent from '../lib/fetchContent';
-import { JSDOM } from 'jsdom';
+import { JSDOM, type DOMWindow } from 'jsdom';
 
 interface SourceXML {
   url: string,
@@ -46,18 +46,23 @@ const gatherUrls = async () => {
     const method = source.method;
 
     for (const xml of source.xmls) {
+      let window: DOMWindow | null = null;
+
       try {
         const content = fixXML(await fetchContent(xml.url, method));
         const dom = new JSDOM(content, { contentType: 'text/xml' });
-        const window = dom.window;
         const selectors = xml.selectors;
 
-        window.document.querySelectorAll(selectors.root).forEach(async node => {
+        window = dom.window;
+
+        const nodes = window.document.querySelectorAll(selectors.root);
+
+        for (const node of nodes) {
           const textContent = node.querySelector(selectors.url)?.textContent ?? null;
 
           if (textContent === null) {
             console.warn('realtime textContent === null', key, xml);
-            return;
+            continue;
           }
 
           try {
@@ -66,31 +71,31 @@ const gatherUrls = async () => {
 
             if (pathname === '/' || xml.pathnamePrefixes.some(item => pathname.startsWith(item)) === false) {
               /* console.warn('realtime pathname mismatch', key, xml, url); */
-              return;
+              continue;
             }
 
             if (await redis.EXISTS(`realtime:article:${textContent}`) > 0 /*||
                 /* await redis.HEXISTS('realtime:candidates', textContent) === true || */) {
-              return;
+              continue;
             }
 
             const date = node.querySelector(selectors.date)?.textContent;
 
             if (typeof date !== 'string') {
               console.warn("realtime typeof date !== 'string'", key, xml, url);
-              return;
+              continue;
             }
 
             const timestamp = Date.parse(date) / 1000;
 
             if (isNaN(timestamp) === true) {
               console.warn('realtime isNaN(timestamp) === true', key, xml, url, date);
-              return;
+              continue;
             }
 
             if (expiry > timestamp) {
               /* console.warn('realtime expiry > timestamp', key, xml, url, date); */
-              return;
+              continue;
             }
 
             const map: { source: string, timestamp: number } = {
@@ -102,11 +107,11 @@ const gatherUrls = async () => {
           } catch (e) {
             console.warn('realtime', e, key, xml, textContent);
           }
-        });
-
-        window.close();
+        }
       } catch (e) {
         console.warn('realtime', e, key, xml);
+      } finally {
+        window?.close();
       }
 
       await new Promise(resolve => setTimeout(resolve, 1000));
@@ -144,10 +149,14 @@ const crawlCandidates = async () => {
     const key: keyof typeof sources = map.source;
     const source: Source = sources[key];
 
+    let window: DOMWindow | null = null;
+
     try {
       const content = fixHTML(await fetchContent(url, source.method));
       const dom = new JSDOM(content);
-      const window = dom.window;
+
+      window = dom.window;
+
       const document = window.document;
 
       const jsonLd = (() => {
@@ -236,8 +245,6 @@ const crawlCandidates = async () => {
         jsonLd.description ||
         undefined;
 
-      window.close();
-
       const cleanTitle = cleanString(title);
       const cleanDescription = typeof description === 'string' ? cleanString(description) : description;
 
@@ -290,6 +297,8 @@ const crawlCandidates = async () => {
       redis.HDEL('realtime:candidates', url);
     } catch (e) {
       console.warn('realtime', e, url, map);
+    } finally {
+      window?.close();
     }
 
     await new Promise(resolve => setTimeout(resolve, 1000));
