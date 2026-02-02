@@ -318,48 +318,14 @@
     "url": "https://www.storm.mg",
     "xmls": [
       {
-        "url": "https://feeds.storm.mg/general/storm/cid?id=117",
+        "url": "https://www.storm.mg/sitemaps/1/article-news-1.xml",
         "selectors": {
-          "root": "item",
-          "url": "link",
-          "date": "pubDate"
+          "root": "url",
+          "url": "loc",
+          "date": "news\\:publication_date"
         },
         "pathnamePrefixes": [
           "/article/"
-        ]
-      },
-      {
-        "url": "https://feeds.storm.mg/general/storm/cid?id=118",
-        "selectors": {
-          "root": "item",
-          "url": "link",
-          "date": "pubDate"
-        },
-        "pathnamePrefixes": [
-          "/article/"
-        ]
-      },
-      {
-        "url": "https://feeds.storm.mg/general/storm/cid?id=121",
-        "selectors": {
-          "root": "item",
-          "url": "link",
-          "date": "pubDate"
-        },
-        "pathnamePrefixes": [
-          "/article/"
-        ]
-      },
-      {
-        "url": "https://feeds.storm.mg/general/storm/cid?id=22172",
-        "selectors": {
-          "root": "item",
-          "url": "link",
-          "date": "pubDate"
-        },
-        "pathnamePrefixes": [
-          "/article/",
-          "/lifestyle/"
         ]
       }
     ]
