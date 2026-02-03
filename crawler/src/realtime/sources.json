@@ -168,18 +168,18 @@
     "url": "https://www.upmedia.mg",
     "xmls": [
       {
-        "url": "https://www.upmedia.mg/sitemap.xml",
+        "url": "https://www.upmedia.mg/sitemapnews",
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "lastmod"
+          "date": "news\\:publication_date"
         },
         "pathnamePrefixes": [
           "/"
         ]
       }
     ],
-    "method": "curl"
+    "method": "browser"
   },
   "ettoday": {
     "name": "ETtoday",
