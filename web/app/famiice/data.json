@@ -4712,7 +4712,7 @@
     "zipCode": 235,
     "latitude": 24.996734,
     "longitude": 121.46532,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
