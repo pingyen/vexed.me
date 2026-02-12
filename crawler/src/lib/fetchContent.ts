@@ -33,15 +33,39 @@ const fetchContent = async (url: string, method: string | undefined) => {
     });
   }
 
-  return await fetch(url, { signal: AbortSignal.timeout(10000) })
-    .then(response => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+
+  return await fetch(url, { signal: controller.signal })
+    .then(async response => {
       const url = response.url;
 
       if ((new URL(url)).pathname === '/') {
         throw new Error(`pathname === '/' ${url}`);
       }
 
-      return response.text();
+      if (response.body === null) {
+        throw new Error('Response body is null');
+      }
+
+      const chunks: Buffer[] = [];
+
+      let totalSize = 0;
+
+      for await (const chunk of response.body!) {
+        totalSize += chunk.length;
+
+        if (totalSize > 2097152) { // 2MB
+          controller.abort();
+          throw new Error('Response too large');
+        }
+
+        chunks.push(Buffer.from(chunk));
+      }
+
+      return Buffer.concat(chunks).toString();
+    }).finally(() => {
+      clearTimeout(timer);
     });
 };
 
