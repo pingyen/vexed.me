@@ -219,7 +219,7 @@
     "name": "延三溫體牛",
     "latitude": 25.066047295989858,
     "longitude": 121.51141526884118,
-    "description": "牛肉燴飯\n\n清燉牛雜湯\n\n川燙牛片湯"
+    "description": "牛肉燴飯\n\n清燉牛雜湯\n\n川燙牛片湯\n\n滷牛舌\n\n滷牛筋\n\n滷牛腩"
   },
   {
     "name": "娥嬤炖鰻",
@@ -316,12 +316,6 @@
     "latitude": 25.0651834,
     "longitude": 121.5109705,
     "description": "當歸鴨腿\n\n鴨肉盤"
-  },
-  {
-    "name": "汕頭原汁牛肉麵",
-    "latitude": 25.065175,
-    "longitude": 121.511012,
-    "description": "清燉牛肉麵\n\n牛肉\n\n青菜"
   },
   {
     "name": "延三夜市 鐵板炒飯 蚵仔煎",
