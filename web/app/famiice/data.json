@@ -351,15 +351,6 @@
     "specialShape": true
   },
   {
-    "name": "全家永安店",
-    "address": "台北市中山區北安路６３０巷７號１樓",
-    "zipCode": 104,
-    "latitude": 25.082873,
-    "longitude": 121.549469,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家大直店",
     "address": "台北市中山區大直街３３巷１號",
     "zipCode": 104,
@@ -16854,7 +16845,7 @@
     "latitude": 23.227245,
     "longitude": 120.350722,
     "twoFlavors": false,
-    "specialShape": true
+    "specialShape": false
   },
   {
     "name": "全家柳營敏惠店",
