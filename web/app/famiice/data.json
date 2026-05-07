@@ -8271,15 +8271,6 @@
     "specialShape": true
   },
   {
-    "name": "全家峨眉台三線店",
-    "address": "新竹縣峨眉鄉石井村石井２７－１７號",
-    "zipCode": 315,
-    "latitude": 24.698675,
-    "longitude": 121.001732,
-    "twoFlavors": true,
-    "specialShape": false
-  },
-  {
     "name": "全家中壢青昇店",
     "address": "桃園市中壢區高鐵北路二段８０號１樓",
     "zipCode": 320,
@@ -15274,19 +15265,19 @@
   },
   {
     "name": "全家土庫新建國店",
-    "address": "雲林縣土庫鎮建國路１６１號",
+    "address": "雲林縣土庫鎮三義路１８－３號",
     "zipCode": 633,
-    "latitude": 23.67950786,
-    "longitude": 120.39209595,
+    "latitude": 23.67943786,
+    "longitude": 120.39202595,
     "twoFlavors": true,
     "specialShape": true
   },
   {
     "name": "全家褒忠蕭傅店",
-    "address": "雲林縣褒忠鄉中勝村９鄰中勝路３５號（配送用）",
+    "address": "雲林縣褒忠鄉中勝村９鄰中勝路３５號",
     "zipCode": 634,
-    "latitude": 23.696641,
-    "longitude": 120.309218,
+    "latitude": 23.696545,
+    "longitude": 120.309276,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -17910,15 +17901,6 @@
     "specialShape": true
   },
   {
-    "name": "全家高雄藍天店",
-    "address": "高雄市楠梓區藍昌路３５８號",
-    "zipCode": 811,
-    "latitude": 22.722828,
-    "longitude": 120.291355,
-    "twoFlavors": true,
-    "specialShape": true
-  },
-  {
     "name": "全家高雄民昌店",
     "address": "高雄市楠梓區德民路９８９之２號一樓",
     "zipCode": 811,
@@ -19933,15 +19915,6 @@
     "longitude": 121.4624824,
     "twoFlavors": false,
     "specialShape": false
-  },
-  {
-    "name": "全家台東新達人店",
-    "address": "台東縣達仁鄉安朔村復興路１４２號",
-    "zipCode": 966,
-    "latitude": 22.2940749,
-    "longitude": 120.88319890000001,
-    "twoFlavors": false,
-    "specialShape": true
   },
   {
     "name": "全家花蓮尚美店",
