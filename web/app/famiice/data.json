@@ -486,15 +486,6 @@
     "specialShape": true
   },
   {
-    "name": "全家撫順店",
-    "address": "台北市中山區撫順街１２之２號１樓",
-    "zipCode": 104,
-    "latitude": 25.063558,
-    "longitude": 121.520853,
-    "twoFlavors": true,
-    "specialShape": false
-  },
-  {
     "name": "全家江寧店",
     "address": "台北市中山區民權東路三段６４號１樓",
     "zipCode": 104,
@@ -4568,15 +4559,6 @@
     "zipCode": 235,
     "latitude": 25.003492,
     "longitude": 121.49643,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
-    "name": "全家中和威利店",
-    "address": "新北市中和區中山路二段２９１號１樓",
-    "zipCode": 235,
-    "latitude": 25.002227,
-    "longitude": 121.496126,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -19612,7 +19594,7 @@
   },
   {
     "name": "全家東港大鵬店",
-    "address": "屏東縣東港鎮船頭里大成路５７號（如圖）",
+    "address": "屏東縣東港鎮東津里大成路５７號（如圖）",
     "zipCode": 928,
     "latitude": 22.462174,
     "longitude": 120.457537,
