@@ -164,7 +164,19 @@ const crawlCandidates = async () => {
           try {
             const result = JSON.parse(fixJsonLd(script.textContent as string));
 
-            for (const item of Array.isArray(result) === true ? result : [result]) {
+            const arr = (() => {
+              if (Array.isArray(result) === true) {
+                return result;
+              }
+
+              if (result['@graph'] !== undefined) {
+                return result['@graph'];
+              }
+
+              return [result];
+            })();
+
+            for (const item of arr) {
               if (item['@type'] === 'NewsArticle') {
                 return item;
               }
