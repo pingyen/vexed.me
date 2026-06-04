@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { APIProvider, Map, AdvancedMarker, useAdvancedMarkerRef, InfoWindow, Pin, type MapCameraProps, type MapCameraChangedEvent } from '@vis.gl/react-google-maps';
+import { APIProvider, Map, AdvancedMarker, useAdvancedMarkerRef, InfoWindow, Pin, useMap } from '@vis.gl/react-google-maps';
 import Header from '../header';
 
 interface Item {
@@ -33,11 +33,54 @@ const Marker = (
   );
 };
 
+const HeaderWrapper = (
+  { setCurrent } :
+  { setCurrent: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral | null>> }) => {
+  const map = useMap();
+
+  const centerOnLocation = () => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const coords = pos.coords;
+      const position = { lat: coords.latitude, lng: coords.longitude }
+
+      if (map !== null) {
+        map.setCenter(position);
+        map.setZoom(16);
+      }
+
+      setCurrent(position);
+    }, () => {
+      alert('請給予位置權限');
+    });
+  };
+
+  useEffect(() => {
+    if (map === null) {
+      return;
+    }
+
+    const permissions = navigator.permissions;
+
+    if (permissions === undefined ||
+        permissions.query === undefined) {
+      return;
+    }
+
+    permissions.query({ name: 'geolocation' })
+      .then(result => {
+        if (result.state === 'granted') {
+          centerOnLocation();
+        }
+      });
+  }, [map]);
+
+  return <Header button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
+};
+
 export default function Client(
   { data } :
   { data: Item[] }) {
   const mainRef = useRef<HTMLElement>(null);
-  const [camera, setCamera] = useState<MapCameraProps | null>(null);
   const [current, setCurrent] = useState<google.maps.LatLngLiteral | null>(null);
 
   const defaultBounds = (() => {
@@ -72,38 +115,6 @@ export default function Client(
     current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
-  const centerOnLocation = () => {
-    navigator.geolocation.getCurrentPosition(pos => {
-      const coords = pos.coords;
-      const position = { lat: coords.latitude, lng: coords.longitude }
-
-      setCamera({ center: position, zoom: 16 });
-      setCurrent(position);
-    }, () => {
-      alert('請給予位置權限');
-    });
-  };
-
-  useEffect(() => {
-    const permissions = navigator.permissions;
-
-    if (permissions === undefined ||
-        permissions.query === undefined) {
-      return;
-    }
-
-    permissions.query({ name: 'geolocation' })
-      .then(result => {
-        if (result.state === 'granted') {
-          centerOnLocation();
-        }
-      });
-  }, []);
-
-  const cameraChanged = (e: MapCameraChangedEvent) => {
-    setCamera(e.detail);
-  };
-
   const getDescription = (item: Item) => {
     const tokens = [];
 
@@ -114,11 +125,10 @@ export default function Client(
   };
 
   return <>
-    <Header
-      button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
-    <main ref={mainRef}>
-      <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
-        <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/sheriff/map" reuseMaps={true}>
+    <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
+      <HeaderWrapper setCurrent={setCurrent} />
+      <main ref={mainRef}>
+        <Map defaultBounds={defaultBounds} mapId="vexed.me/sheriff/map" reuseMaps={true}>
           {data.map((item, index) =>
             <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
           {current &&
@@ -126,7 +136,7 @@ export default function Client(
               <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
             </Marker>}
         </Map>
-      </APIProvider>
-    </main>
+      </main>
+    </APIProvider>
   </>;
 }
