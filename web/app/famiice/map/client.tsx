@@ -130,7 +130,7 @@ export default function Client(
       specialShapeChange={e => { setSpecialShapeOnly(e.target.checked); }}/>
     <main ref={mainRef}>
       <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
-        <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/food/map" reuseMaps={true}>
+        <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/famiice/map" reuseMaps={true}>
           {data.map((item, index) =>
             (twoFlavorsOnly === true && item.twoFlavors === false) || (specialShapeOnly  === true && item.specialShape === false) ? null :
               <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}

@@ -118,7 +118,7 @@ export default function Client(
       button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
     <main ref={mainRef}>
       <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
-        <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/food/map" reuseMaps={true}>
+        <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/sheriff/map" reuseMaps={true}>
           {data.map((item, index) =>
             <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
           {current &&
