@@ -119,12 +119,12 @@ export default function Client(
     <main ref={mainRef}>
       <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
         <Map defaultBounds={defaultBounds} {...camera} onCameraChanged={cameraChanged} mapId="vexed.me/food/map" reuseMaps={true}>
-            {data.map((item, index) =>
-              <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
-            {current &&
-              <Marker position={current} description="目前位置">
-                <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-              </Marker>}
+          {data.map((item, index) =>
+            <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
+          {current &&
+            <Marker position={current} description="目前位置">
+              <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+            </Marker>}
         </Map>
       </APIProvider>
     </main>
