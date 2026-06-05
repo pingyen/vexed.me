@@ -83,6 +83,76 @@ const HeaderWrapper = (
     specialShapeChange={e => { setSpecialShapeOnly(e.target.checked); }}/>
 };
 
+const VisibleMarkers = (
+  { data, twoFlavorsOnly, specialShapeOnly, current } :
+  { data: Item[], twoFlavorsOnly: boolean, specialShapeOnly: boolean, current: google.maps.LatLngLiteral | null }) => {
+  const map = useMap();
+  const [items, setItems] = useState<Item[]>([]);
+  const [showCurrent, setShowCurrent] = useState(false);
+
+  const refresh = useCallback(() => {
+    if (map === null) {
+      return;
+    }
+
+    const bounds = map.getBounds();
+
+    if (bounds === undefined) {
+      return;
+    }
+
+    setItems(data.filter(item =>
+      bounds.contains({ lat: item.latitude, lng: item.longitude }) &&
+      (!twoFlavorsOnly || item.twoFlavors) &&
+      (!specialShapeOnly || item.specialShape)));
+
+    setShowCurrent(current !== null && bounds.contains(current));
+  }, [map, data, twoFlavorsOnly, specialShapeOnly, current]);
+
+  useEffect(() => {
+    if (map === null) {
+      return;
+    }
+
+    refresh();
+
+    const listener = map.addListener('idle', refresh);
+
+    return () => {
+      listener.remove();
+    };
+  }, [map, refresh]);
+
+  const getDescription = useCallback((item: Item) => {
+    const tokens = [];
+
+    if (item.twoFlavors === true) {
+      tokens.push('雙口味');
+    }
+
+    if (item.specialShape === true) {
+      tokens.push('特殊造型');
+    }
+
+    tokens.push(item.address);
+
+    return tokens.join('\n\n');
+  }, []);
+
+  return <>
+    {items.map(item => {
+      const lat = item.latitude;
+      const lng = item.longitude;
+      const name = item.name;
+      return <Marker key={`${name}+${lat}+${lng}`} position={{ lat, lng }} name={name} description={getDescription(item)} />})}
+    {showCurrent &&
+      <Marker position={current as google.maps.LatLngLiteral} description="目前位置">
+        <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+      </Marker>}
+  </>;
+};
+
+
 export default function Client(
   { data } :
   { data: Item[] }) {
@@ -123,48 +193,12 @@ export default function Client(
     current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
-  const getDescription = useCallback((item: Item) => {
-    const tokens = [];
-
-    if (item.twoFlavors === true) {
-      tokens.push('雙口味');
-    }
-
-    if (item.specialShape === true) {
-      tokens.push('特殊造型');
-    }
-
-    tokens.push(item.address);
-
-    return tokens.join('\n\n');
-  }, []);
-
-  const items = useMemo(() => {
-    const items = [];
-
-    for (const item of data) {
-      if ((twoFlavorsOnly === true && item.twoFlavors === false) ||
-          (specialShapeOnly  === true && item.specialShape === false)) {
-        continue;
-      }
-
-      items.push(item);
-    }
-
-    return items;
-  }, [data, twoFlavorsOnly, specialShapeOnly]);
-
   return <>
     <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
       <HeaderWrapper setCurrent={setCurrent} setTwoFlavorsOnly={setTwoFlavorsOnly} setSpecialShapeOnly={setSpecialShapeOnly} />
       <main ref={mainRef}>
         <Map defaultBounds={defaultBounds} mapId="vexed.me/famiice/map" reuseMaps={true}>
-          {items.map((item, index) =>
-            <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
-          {current &&
-            <Marker position={current} description="目前位置">
-              <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-            </Marker>}
+          <VisibleMarkers data={data} twoFlavorsOnly={twoFlavorsOnly} specialShapeOnly={specialShapeOnly} current={current} />
         </Map>
       </main>
     </APIProvider>

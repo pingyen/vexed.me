@@ -75,6 +75,55 @@ const HeaderWrapper = (
   return <Header button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
 };
 
+const VisibleMarkers = (
+  { data, current } :
+  { data: Item[], current: google.maps.LatLngLiteral | null }) => {
+  const map = useMap();
+  const [items, setItems] = useState<Item[]>([]);
+  const [showCurrent, setShowCurrent] = useState(false);
+
+  const refresh = useCallback(() => {
+    if (map === null) {
+      return;
+    }
+
+    const bounds = map.getBounds();
+
+    if (bounds === undefined) {
+      return;
+    }
+
+    setItems(data.filter(item => bounds.contains({ lat: item.latitude, lng: item.longitude }))) ;
+    setShowCurrent(current !== null && bounds.contains(current));
+  }, [map, data, current]);
+
+  useEffect(() => {
+    if (map === null) {
+      return;
+    }
+
+    refresh();
+
+    const listener = map.addListener('idle', refresh);
+
+    return () => {
+      listener.remove();
+    };
+  }, [map, refresh]);
+
+  return <>
+    {items.map(item => {
+      const lat = item.latitude;
+      const lng = item.longitude;
+      const name = item.name;
+      return <Marker key={`${name}+${lat}+${lng}`} position={{ lat, lng }} name={name} description={item.description} />})}
+    {showCurrent &&
+      <Marker position={current as google.maps.LatLngLiteral} description="目前位置">
+        <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+      </Marker>}
+  </>;
+};
+
 export default function Client(
   { data } :
   { data: Item[] }) {
@@ -118,12 +167,7 @@ export default function Client(
       <HeaderWrapper setCurrent={setCurrent} />
       <main ref={mainRef}>
         <Map defaultBounds={defaultBounds} mapId="vexed.me/food/map" reuseMaps={true}>
-          {data.map((item, index) =>
-            <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={item.description} />)}
-          {current &&
-            <Marker position={current} description="目前位置">
-              <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-            </Marker>}
+          <VisibleMarkers data={data} current={current} />
         </Map>
       </main>
     </APIProvider>

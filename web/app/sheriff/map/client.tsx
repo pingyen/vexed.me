@@ -77,6 +77,64 @@ const HeaderWrapper = (
   return <Header button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
 };
 
+const VisibleMarkers = (
+  { data, current } :
+  { data: Item[], current: google.maps.LatLngLiteral | null }) => {
+  const map = useMap();
+  const [items, setItems] = useState<Item[]>([]);
+  const [showCurrent, setShowCurrent] = useState(false);
+
+  const refresh = useCallback(() => {
+    if (map === null) {
+      return;
+    }
+
+    const bounds = map.getBounds();
+
+    if (bounds === undefined) {
+      return;
+    }
+
+    setItems(data.filter(item => bounds.contains({ lat: item.latitude, lng: item.longitude }))) ;
+    setShowCurrent(current !== null && bounds.contains(current));
+  }, [map, data, current]);
+
+  useEffect(() => {
+    if (map === null) {
+      return;
+    }
+
+    refresh();
+
+    const listener = map.addListener('idle', refresh);
+
+    return () => {
+      listener.remove();
+    };
+  }, [map, refresh]);
+
+  const getDescription = useCallback((item: Item) => {
+    const tokens = [];
+
+    tokens.push(item.address);
+    tokens.push(`營業時間 ${item.time}`);
+
+    return tokens.join('\n\n');
+  }, []);
+
+  return <>
+    {items.map(item => {
+      const lat = item.latitude;
+      const lng = item.longitude;
+      const name = item.name;
+      return <Marker key={`${name}+${lat}+${lng}`} position={{ lat, lng }} name={name} description={getDescription(item)} />})}
+    {showCurrent &&
+      <Marker position={current as google.maps.LatLngLiteral} description="目前位置">
+        <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+      </Marker>}
+  </>;
+};
+
 export default function Client(
   { data } :
   { data: Item[] }) {
@@ -115,26 +173,12 @@ export default function Client(
     current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
-  const getDescription = useCallback((item: Item) => {
-    const tokens = [];
-
-    tokens.push(item.address);
-    tokens.push(`營業時間 ${item.time}`);
-
-    return tokens.join('\n\n');
-  }, []);
-
   return <>
     <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
       <HeaderWrapper setCurrent={setCurrent} />
       <main ref={mainRef}>
         <Map defaultBounds={defaultBounds} mapId="vexed.me/sheriff/map" reuseMaps={true}>
-          {data.map((item, index) =>
-            <Marker key={index} position={{ lat: item.latitude, lng: item.longitude }} name={item.name} description={getDescription(item)} />)}
-          {current &&
-            <Marker position={current} description="目前位置">
-              <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-            </Marker>}
+          <VisibleMarkers data={data} current={current} />
         </Map>
       </main>
     </APIProvider>
