@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { APIProvider, Map, AdvancedMarker, useAdvancedMarkerRef, InfoWindow, Pin, useMap } from '@vis.gl/react-google-maps';
 import Header from '../header';
 
@@ -38,7 +38,7 @@ const HeaderWrapper = (
   { setCurrent: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral | null>> }) => {
   const map = useMap();
 
-  const centerOnLocation = () => {
+  const centerOnLocation = useCallback(() => {
     navigator.geolocation.getCurrentPosition(pos => {
       const coords = pos.coords;
       const position = { lat: coords.latitude, lng: coords.longitude }
@@ -52,7 +52,7 @@ const HeaderWrapper = (
     }, () => {
       alert('請給予位置權限');
     });
-  };
+  }, [map, setCurrent]);
 
   useEffect(() => {
     if (map === null) {
@@ -72,7 +72,7 @@ const HeaderWrapper = (
           centerOnLocation();
         }
       });
-  }, [map]);
+  }, [map, centerOnLocation]);
 
   return <Header button={{ click: centerOnLocation, text: '以目前位置為中心' }}/>
 };
@@ -83,7 +83,7 @@ export default function Client(
   const mainRef = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState<google.maps.LatLngLiteral | null>(null);
 
-  const defaultBounds = (() => {
+  const defaultBounds = useMemo(() => {
     let north = -90;
     let south = 90;
     let east = -180;
@@ -107,7 +107,7 @@ export default function Client(
     }
 
     return { north, south, east, west };
-  })();
+  }, [data]);
 
   useEffect(() => {
     const current = mainRef.current as HTMLElement;
@@ -115,14 +115,14 @@ export default function Client(
     current.style.height = `calc(100${unit} - ${current.offsetTop}px)`;
   }, []);
 
-  const getDescription = (item: Item) => {
+  const getDescription = useCallback((item: Item) => {
     const tokens = [];
 
     tokens.push(item.address);
     tokens.push(`營業時間 ${item.time}`);
 
     return tokens.join('\n\n');
-  };
+  }, []);
 
   return <>
     <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
