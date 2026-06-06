@@ -124,32 +124,6 @@ export default function Client(
   const mainRef = useRef<HTMLElement>(null);
   const [current, setCurrent] = useState<google.maps.LatLngLiteral | null>(null);
 
-  const defaultBounds = useMemo(() => {
-    let north = -90;
-    let south = 90;
-    let east = -180;
-    let west = 180;
-
-    for (const item of data) {
-      const lat = item.latitude;
-      const lng = item.longitude;
-
-      if (lat > north) {
-        north = lat;
-      } else if (lat < south) {
-        south = lat;
-      }
-
-      if (lng > east) {
-        east = lng;
-      } else if (lng < west) {
-        west = lng;
-      }
-    }
-
-    return { north, south, east, west };
-  }, [data]);
-
   useEffect(() => {
     const current = mainRef.current as HTMLElement;
     const unit = /iP(ad|hone)/.test(navigator.userAgent) === true ? 'dvh' : 'vh';
@@ -160,7 +134,7 @@ export default function Client(
     <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
       <HeaderWrapper setCurrent={setCurrent} />
       <main ref={mainRef}>
-        <Map defaultBounds={defaultBounds} mapId="vexed.me/food/map" reuseMaps={true}>
+        <Map defaultCenter={{ lat: 25.04778, lng: 121.51722 }} defaultZoom={16} mapId="vexed.me/food/map" reuseMaps={true}>
           <VisibleMarkers data={data} />
           {current &&
             <Marker position={current} description="目前位置">

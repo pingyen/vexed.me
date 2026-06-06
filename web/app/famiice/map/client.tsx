@@ -154,32 +154,6 @@ export default function Client(
   const [twoFlavorsOnly, setTwoFlavorsOnly] = useState(false);
   const [specialShapeOnly, setSpecialShapeOnly] = useState(false);
 
-  const defaultBounds = useMemo(() => {
-    let north = -90;
-    let south = 90;
-    let east = -180;
-    let west = 180;
-
-    for (const item of data) {
-      const lat = item.latitude;
-      const lng = item.longitude;
-
-      if (lat > north) {
-        north = lat;
-      } else if (lat < south) {
-        south = lat;
-      }
-
-      if (lng > east) {
-        east = lng;
-      } else if (lng < west) {
-        west = lng;
-      }
-    }
-
-    return { north, south, east, west };
-  }, [data]);
-
   useEffect(() => {
     const current = mainRef.current as HTMLElement;
     const unit = /iP(ad|hone)/.test(navigator.userAgent) === true ? 'dvh' : 'vh';
@@ -190,7 +164,7 @@ export default function Client(
     <APIProvider apiKey="AIzaSyCoDq0N1wYtdX_Oien1ZZ-wRhE2tIqHJ4k">
       <HeaderWrapper setCurrent={setCurrent} setTwoFlavorsOnly={setTwoFlavorsOnly} setSpecialShapeOnly={setSpecialShapeOnly} />
       <main ref={mainRef}>
-        <Map defaultBounds={defaultBounds} mapId="vexed.me/famiice/map" reuseMaps={true}>
+        <Map defaultCenter={{ lat: 25.04778, lng: 121.51722 }} defaultZoom={16} mapId="vexed.me/famiice/map" reuseMaps={true}>
           <VisibleMarkers data={data} twoFlavorsOnly={twoFlavorsOnly} specialShapeOnly={specialShapeOnly} />
           {current &&
             <Marker position={current} description="目前位置">
