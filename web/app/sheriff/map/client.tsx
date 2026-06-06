@@ -78,11 +78,10 @@ const HeaderWrapper = (
 };
 
 const VisibleMarkers = (
-  { data, current } :
-  { data: Item[], current: google.maps.LatLngLiteral | null }) => {
+  { data } :
+  { data: Item[] }) => {
   const map = useMap();
   const [items, setItems] = useState<Item[]>([]);
-  const [showCurrent, setShowCurrent] = useState(false);
 
   const refresh = useCallback(() => {
     if (map === null) {
@@ -96,8 +95,7 @@ const VisibleMarkers = (
     }
 
     setItems(data.filter(item => bounds.contains({ lat: item.latitude, lng: item.longitude }))) ;
-    setShowCurrent(current !== null && bounds.contains(current));
-  }, [map, data, current]);
+  }, [map, data]);
 
   useEffect(() => {
     if (map === null) {
@@ -128,10 +126,6 @@ const VisibleMarkers = (
       const lng = item.longitude;
       const name = item.name;
       return <Marker key={`${name}+${lat}+${lng}`} position={{ lat, lng }} name={name} description={getDescription(item)} />})}
-    {showCurrent &&
-      <Marker position={current as google.maps.LatLngLiteral} description="目前位置">
-        <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-      </Marker>}
   </>;
 };
 
@@ -178,8 +172,12 @@ export default function Client(
       <HeaderWrapper setCurrent={setCurrent} />
       <main ref={mainRef}>
         <Map defaultBounds={defaultBounds} mapId="vexed.me/sheriff/map" reuseMaps={true}>
-          <VisibleMarkers data={data} current={current} />
+          <VisibleMarkers data={data} />
         </Map>
+        {current &&
+          <Marker position={current} description="目前位置">
+            <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+          </Marker>}
       </main>
     </APIProvider>
   </>;

@@ -84,11 +84,10 @@ const HeaderWrapper = (
 };
 
 const VisibleMarkers = (
-  { data, twoFlavorsOnly, specialShapeOnly, current } :
-  { data: Item[], twoFlavorsOnly: boolean, specialShapeOnly: boolean, current: google.maps.LatLngLiteral | null }) => {
+  { data, twoFlavorsOnly, specialShapeOnly } :
+  { data: Item[], twoFlavorsOnly: boolean, specialShapeOnly: boolean }) => {
   const map = useMap();
   const [items, setItems] = useState<Item[]>([]);
-  const [showCurrent, setShowCurrent] = useState(false);
 
   const refresh = useCallback(() => {
     if (map === null) {
@@ -105,9 +104,7 @@ const VisibleMarkers = (
       bounds.contains({ lat: item.latitude, lng: item.longitude }) &&
       (!twoFlavorsOnly || item.twoFlavors) &&
       (!specialShapeOnly || item.specialShape)));
-
-    setShowCurrent(current !== null && bounds.contains(current));
-  }, [map, data, twoFlavorsOnly, specialShapeOnly, current]);
+  }, [map, data, twoFlavorsOnly, specialShapeOnly]);
 
   useEffect(() => {
     if (map === null) {
@@ -145,10 +142,6 @@ const VisibleMarkers = (
       const lng = item.longitude;
       const name = item.name;
       return <Marker key={`${name}+${lat}+${lng}`} position={{ lat, lng }} name={name} description={getDescription(item)} />})}
-    {showCurrent &&
-      <Marker position={current as google.maps.LatLngLiteral} description="目前位置">
-        <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
-      </Marker>}
   </>;
 };
 
@@ -198,7 +191,11 @@ export default function Client(
       <HeaderWrapper setCurrent={setCurrent} setTwoFlavorsOnly={setTwoFlavorsOnly} setSpecialShapeOnly={setSpecialShapeOnly} />
       <main ref={mainRef}>
         <Map defaultBounds={defaultBounds} mapId="vexed.me/famiice/map" reuseMaps={true}>
-          <VisibleMarkers data={data} twoFlavorsOnly={twoFlavorsOnly} specialShapeOnly={specialShapeOnly} current={current} />
+          <VisibleMarkers data={data} twoFlavorsOnly={twoFlavorsOnly} specialShapeOnly={specialShapeOnly} />
+          {current &&
+            <Marker position={current} description="目前位置">
+              <Pin background="#FFD356" glyphColor="#000" borderColor="#000" />
+            </Marker>}
         </Map>
       </main>
     </APIProvider>
