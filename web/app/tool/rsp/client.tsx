@@ -128,7 +128,7 @@ export default function Client() {
       {results.length > 0 && (
         <div className="m-3">
           <h2 className="text-2xl font-bold mb-4">計算結果</h2>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto max-w-md">
             <table className="min-w-full border border-gray-300">
               <thead>
                 <tr className="bg-gray-100">
