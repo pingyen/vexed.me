@@ -696,6 +696,12 @@
     "description": "排骨湯\n\n高麗菜"
   },
   {
+    "name": "NARA 新北新莊宏匯店",
+    "latitude": 25.059962781123488,
+    "longitude": 121.44982699978311,
+    "description": "松阪豬\n\n金錢蝦餅"
+  },
+  {
     "name": "31 冰淇淋 新莊宏匯廣場店",
     "latitude": 25.059890288637895,
     "longitude": 121.44921387814504,
@@ -1134,10 +1140,22 @@
     "description": "生鮭魚脂\n\n鮭魚親子海苔包\n\n靜岡抹茶霜淇淋\n\n蒸蛋\n\n鰻魚\n\n豆乳甜甜圈\n\n抹茶冰淇淋"
   },
   {
+    "name": "必勝客 圓環外送店",
+    "latitude": 25.053032754233453,
+    "longitude": 121.51399502606222,
+    "description": "彩蔬鮮菇"
+  },
+  {
     "name": "誠興食堂",
     "latitude": 25.052839539841116,
     "longitude": 121.53373862250467,
     "description": "牛肉炒飯 加蛋包"
+  },
+  {
+    "name": "NARA 台北南港 CITYLINK 店",
+    "latitude": 25.05252904160422,
+    "longitude": 121.60452872861867,
+    "description": "松阪豬\n\n金錢蝦餅"
   },
   {
     "name": "世界的山將 南京店",
@@ -1948,6 +1966,12 @@
     "latitude": 25.04205849248219,
     "longitude": 121.54442006246143,
     "description": "醬油拉麵\n\n溏心蛋"
+  },
+  {
+    "name": "NARA 台北忠孝 SOGO 店",
+    "latitude": 25.042032023785755,
+    "longitude": 121.5446910835191,
+    "description": "松阪豬\n\n金錢蝦餅"
   },
   {
     "name": "種福園 懷寧本店",
