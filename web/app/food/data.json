@@ -1155,7 +1155,7 @@
     "name": "NARA 台北南港 CITYLINK 店",
     "latitude": 25.05252904160422,
     "longitude": 121.60452872861867,
-    "description": "松阪豬\n\n金錢蝦餅"
+    "description": "松阪豬\n\n金錢蝦餅\n\nC 棟 7 樓"
   },
   {
     "name": "世界的山將 南京店",
@@ -1167,13 +1167,13 @@
     "name": "大戶屋 誠品南西店",
     "latitude": 25.052422,
     "longitude": 121.520627,
-    "description": "炭烤雞豬雙麴定食\n\nB1 美食街"
+    "description": "蒸蛋\n\nB1 美食街"
   },
   {
     "name": "六堆伙房 中山南西店",
     "latitude": 25.052405,
     "longitude": 121.5222584,
-    "description": "客家菜尾盅\n\n酸菜魚片麵\n\n口水雞\n\n胡麻龍鬚塔"
+    "description": "客家菜尾盅\n\n酸菜魚片麵\n\n口水雞\n\n胡麻龍鬚塔\n\nB1"
   },
   {
     "name": "IKEA 小巨蛋店",
@@ -1270,6 +1270,12 @@
     "latitude": 25.049628668612588,
     "longitude": 121.51700025386296,
     "description": "酸菜蛤蜊魚麵 Q 麵\n\n酥炸排骨麵 細麵\n\n烏梅桂花蜜"
+  },
+  {
+    "name": "大戶屋 松山車站店",
+    "latitude": 25.049429784196697,
+    "longitude": 121.57869406617483,
+    "description": "蒸蛋\n\n1 樓"
   },
   {
     "name": "31 冰淇淋 京站時尚廣場店",
@@ -1383,7 +1389,7 @@
     "name": "大戶屋 台北凱撒店",
     "latitude": 25.046307,
     "longitude": 121.516433,
-    "description": "炭烤雞豬雙麴定食\n\n凱撒飯店 B1"
+    "description": "蒸蛋\n\n凱撒飯店 B1"
   },
   {
     "name": "瓦城 台北三越站前店",
