@@ -5139,6 +5139,15 @@
     "specialShape": false
   },
   {
+    "name": "全家頭城省道店",
+    "address": "宜蘭縣頭城鎮二城里青雲路一段１號",
+    "zipCode": 261,
+    "latitude": 24.83769701,
+    "longitude": 121.78857709,
+    "twoFlavors": true,
+    "specialShape": false
+  },
+  {
     "name": "全家礁溪仁愛店",
     "address": "宜蘭縣礁溪鄉仁愛路１６號１樓",
     "zipCode": 262,
@@ -7767,15 +7776,6 @@
     "specialShape": false
   },
   {
-    "name": "全家台中圖樂店",
-    "address": "台中市西屯區文華路１３８巷１之２號",
-    "zipCode": 403,
-    "latitude": 24.1829337,
-    "longitude": 120.64609244,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家台中科博館店",
     "address": "台中市西區博館路１１７號",
     "zipCode": 403,
@@ -8222,6 +8222,15 @@
     "zipCode": 407,
     "latitude": 24.18426,
     "longitude": 120.616872,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家台中圖樂店",
+    "address": "台中市西屯區文華路１３８巷１之２號",
+    "zipCode": 407,
+    "latitude": 24.1829337,
+    "longitude": 120.64609244,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -11340,15 +11349,6 @@
     "specialShape": false
   },
   {
-    "name": "全家台南西華店",
-    "address": "台南市北區西華街５７號１樓店面（承租範圍如附圖）",
-    "zipCode": 700,
-    "latitude": 22.998909,
-    "longitude": 120.210466,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
     "name": "全家台南赤崁店",
     "address": "台南市中西區民族路二段２５７號一樓",
     "zipCode": 700,
@@ -11633,6 +11633,15 @@
     "zipCode": 704,
     "latitude": 23.002395,
     "longitude": 120.204795,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
+    "name": "全家台南西華店",
+    "address": "台南市北區西華街５７號１樓店面（承租範圍如附圖）",
+    "zipCode": 704,
+    "latitude": 22.998909,
+    "longitude": 120.210466,
     "twoFlavors": false,
     "specialShape": false
   },
