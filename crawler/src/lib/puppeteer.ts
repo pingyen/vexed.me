@@ -42,7 +42,7 @@ puppeteer.use(StealthPlugin());
       });
 
       await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 20000 });
-      stdout.write(await page.content());
+      stdout.write(JSON.stringify({ url: page.url(), content: await page.content() }));
     } catch (e) {
       stderr.write(typeof e === 'string' ? e : (e as Error).toString());
     } finally {

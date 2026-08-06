@@ -3,6 +3,9 @@ import sources from './sources.json';
 import fetchContent from '../lib/fetchContent';
 import { JSDOM, type DOMWindow } from 'jsdom';
 
+// @ts-expect-error
+import { GoogleDecoder } from 'google-news-url-decoder';
+
 interface SourceXML {
   url: string,
   selectors: { [key: string]: string },
@@ -17,6 +20,11 @@ interface Source {
   method?: string
 };
 
+interface Result {
+  url: string,
+  content: string
+};
+
 const cleanString = (str: string) => str.replace(/[ …\.]/g, '').replace(/　/g, ' ').toLowerCase();
 
 const stripCtrlChars = (str: string) => str.replace(/[\u0000-\u001F\u007F-\u009F]/g, '');
@@ -28,6 +36,8 @@ const fixJsonLd = (jsonLd: string) => stripCtrlChars(jsonLd);
 const fixHTML = (html: string) => html.replace(/<style[^>]*?>[\s\S]*?<\/style[^>]*?>/gim, '');
 
 const getExpiry = () => Date.now() / 1000 - 1296000; // 86400 * 15
+
+const decoder = new GoogleDecoder();
 
 let redis: RedisClientType;
 
@@ -49,7 +59,8 @@ const gatherUrls = async () => {
       let window: DOMWindow | null = null;
 
       try {
-        const content = fixXML(await fetchContent(xml.url, method));
+        const result = await fetchContent(xml.url, method) as Result;
+        const content = fixXML(result.content);
         const dom = new JSDOM(content, { contentType: 'text/xml' });
         const selectors = xml.selectors;
 
@@ -98,12 +109,27 @@ const gatherUrls = async () => {
               continue;
             }
 
+            let id;
+
+            if (url.hostname === 'news.google.com') {
+              const result = await decoder.decode(textContent);
+
+              if (result.status === false) {
+                console.warn('realtime google news decode status === false', key, xml, textContent);
+                continue;
+              }
+
+              id = result.decoded_url;
+            } else {
+              id = textContent;
+            }
+
             const map: { source: string, timestamp: number } = {
               source: key,
               timestamp
             };
 
-            redis.HSET('realtime:candidates', textContent, JSON.stringify(map));
+            redis.HSET('realtime:candidates', id, JSON.stringify(map));
           } catch (e) {
             console.warn('realtime', e, key, xml, textContent);
           }
@@ -152,7 +178,8 @@ const crawlCandidates = async () => {
     let window: DOMWindow | null = null;
 
     try {
-      const content = fixHTML(await fetchContent(url, source.method));
+      const result = await fetchContent(url, source.method) as Result;
+      const content = fixHTML(result.content);
       const dom = new JSDOM(content);
 
       window = dom.window;
@@ -262,6 +289,7 @@ const crawlCandidates = async () => {
 
       const article = {
         timestamp,
+        url: result.url,
         title,
         source: key,
         image,

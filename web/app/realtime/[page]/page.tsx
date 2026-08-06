@@ -144,7 +144,10 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
     article.title = cleanTitle(source, article.title);
     article.source = sources.get(source);
 
-    article.url = url;
+    if (article.url === undefined) {
+      article.url = url;
+    }
+
     articles.push(article);
   }
 

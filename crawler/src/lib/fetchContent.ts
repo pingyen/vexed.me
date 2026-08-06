@@ -1,4 +1,4 @@
-import { curly } from 'node-libcurl';
+import { Curl } from 'node-libcurl';
 import { spawn } from 'child_process';
 
 const puppeteerCmd = process.argv[0];
@@ -8,8 +8,30 @@ const fetchContent = async (url: string, method: string | undefined) => {
   console.log('fetchContent', url, method !== undefined ? method : '');
 
   if (method === 'curl') {
-    const data = (await curly.get(url, { timeout: 10 })).data;
-    return typeof data === 'string' ? data : data.toString();
+    return new Promise((resolve, reject) => {
+      const curl = new Curl();
+      const option = Curl.option;
+
+      curl.setOpt(option.URL, url);
+      curl.setOpt(option.TIMEOUT, 10);
+      curl.setOpt(option.FOLLOWLOCATION, true);
+
+      curl.on('end', function (statusCode, data) {
+        resolve({
+          url: this.getInfo(Curl.info.EFFECTIVE_URL),
+          content: Buffer.isBuffer(data) ? data.toString() : data
+        });
+
+        this.close();
+      });
+
+      curl.on('error', function (err) {
+        this.close();
+        reject(err);
+      });
+
+      curl.perform();
+    });
   }
 
   if (method === 'browser') {
@@ -28,7 +50,7 @@ const fetchContent = async (url: string, method: string | undefined) => {
       proc.on('exit', () => {
         errs.length > 0 ?
           reject(errs.join('\n')) :
-          resolve(outs.join(''));
+          resolve(JSON.parse(outs.join('')));
       });
     });
   }
@@ -63,7 +85,10 @@ const fetchContent = async (url: string, method: string | undefined) => {
         chunks.push(Buffer.from(chunk));
       }
 
-      return Buffer.concat(chunks).toString();
+      return {
+        url: response.url,
+        content: Buffer.concat(chunks).toString()
+      };      
     }).finally(() => {
       clearTimeout(timer);
     });

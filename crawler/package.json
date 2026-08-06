@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "google-news-url-decoder": "^1.2.2",
     "jsdom": "^24.1.0",
     "node-cron": "^3.0.3",
     "node-libcurl": "^4.0.0",
