@@ -1,6 +1,16 @@
 {
-  "upmedia": "--上報",
-  "tvbs": "│TVBS新聞網",
-  "mirrormedia": " - 鏡週刊 Mirror Media",
-  "nextapple": "｜壹蘋新聞網"
+  "upmedia": [
+    "--上報",
+    " -- 上報"
+  ],
+  "tvbs": [
+    "│TVBS新聞網",
+    "｜TVBS新聞 @TVBSNEWS01 │ TVBS新聞網"
+  ],
+  "mirrormedia": [
+    " - 鏡週刊 Mirror Media"
+  ],
+  "nextapple": [
+    "｜壹蘋新聞網"
+  ]
 }

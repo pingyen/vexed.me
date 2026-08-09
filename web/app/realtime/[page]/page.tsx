@@ -120,14 +120,16 @@ export default async function Page(props: { params: Promise<{ page?: string }> }
   const articles = [];
 
   const cleanTitle = (source: string, title: string) => {
-    const ending = titleEndings.get(source);
+    const endings = titleEndings.get(source);
 
-    if (ending === undefined) {
+    if (endings === undefined) {
       return title;
     }
 
-    if (title.endsWith(ending) === true) {
-      return title.substring(0, title.length - ending.length);
+    for (const ending of endings) {
+      if (title.endsWith(ending) === true) {
+        return title.substring(0, title.length - ending.length);
+      }
     }
 
     return title;
