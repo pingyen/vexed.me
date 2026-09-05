@@ -5585,7 +5585,7 @@
     "zipCode": 300,
     "latitude": 24.775581,
     "longitude": 121.026787,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
@@ -6143,7 +6143,7 @@
     "zipCode": 320,
     "latitude": 24.963174,
     "longitude": 121.217528,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
@@ -12623,7 +12623,7 @@
     "zipCode": 804,
     "latitude": 22.659175,
     "longitude": 120.291379,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
