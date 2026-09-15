@@ -12429,6 +12429,15 @@
     "specialShape": false
   },
   {
+    "name": "全家高雄天河店",
+    "address": "高雄市前金區市中一路９９號一樓部分範圍",
+    "zipCode": 801,
+    "latitude": 22.623101,
+    "longitude": 120.292243,
+    "twoFlavors": false,
+    "specialShape": false
+  },
+  {
     "name": "全家高雄新義店",
     "address": "高雄市苓雅區正義路１７６號壹樓",
     "zipCode": 802,
@@ -12488,15 +12497,6 @@
     "zipCode": 802,
     "latitude": 22.624183,
     "longitude": 120.318081,
-    "twoFlavors": false,
-    "specialShape": false
-  },
-  {
-    "name": "全家高雄天河店",
-    "address": "高雄市前金區市中一路９９號一樓部分範圍",
-    "zipCode": 802,
-    "latitude": 22.623101,
-    "longitude": 120.292243,
     "twoFlavors": false,
     "specialShape": false
   },
@@ -14595,15 +14595,6 @@
     "latitude": 23.99199549,
     "longitude": 121.57504857,
     "twoFlavors": false,
-    "specialShape": false
-  },
-  {
-    "name": "全家吉安鑫莊敬店",
-    "address": "花蓮縣吉安鄉自強路６０３號",
-    "zipCode": 973,
-    "latitude": 23.98923065,
-    "longitude": 121.59370128,
-    "twoFlavors": true,
     "specialShape": false
   },
   {
