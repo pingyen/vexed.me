@@ -1643,7 +1643,7 @@
     "zipCode": 114,
     "latitude": 25.079526,
     "longitude": 121.572918,
-    "twoFlavors": true,
+    "twoFlavors": false,
     "specialShape": false
   },
   {
