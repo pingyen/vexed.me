@@ -88,7 +88,7 @@ const gatherUrls = async () => {
             const date = node.querySelector(selectors.date)?.textContent;
 
             if (typeof date !== 'string') {
-              console.warn("realtime typeof date !== 'string'", key, xml, url);
+              console.warn("realtime typeof date !== 'string'", key, xml, url, node.outerHTML, date);
               continue;
             }
 
@@ -262,7 +262,7 @@ const crawlCandidates = async () => {
         undefined;
 
       if (title === undefined) {
-        console.warn('realtime title === undefined', url, map);
+        console.warn('realtime title === undefined', url, map, jsonLd, content);
         redis.HDEL('realtime:candidates', url);
         continue;
       }
