@@ -25,7 +25,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/story/"
@@ -36,7 +36,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/story/"
@@ -53,7 +53,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/money/story/"
@@ -64,7 +64,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/money/story/"
@@ -81,7 +81,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/realtimenews/",
@@ -102,7 +102,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -138,7 +138,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/"
@@ -172,7 +172,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/"
@@ -190,7 +190,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -201,7 +201,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -236,7 +236,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/news/"
@@ -322,7 +322,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/article/"
@@ -339,7 +339,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/zhongwen/trad/"
@@ -350,7 +350,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/zhongwen/trad/"
@@ -361,7 +361,7 @@
         "selectors": {
           "root": "url",
           "url": "loc",
-          "date": "news\\:publication_date"
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/zhongwen/trad/"
