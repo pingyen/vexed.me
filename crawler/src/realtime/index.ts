@@ -85,11 +85,6 @@ const gatherUrls = async () => {
               continue;
             }
 
-            if (await redis.EXISTS(`realtime:article:${textContent}`) > 0 /*||
-                /* await redis.HEXISTS('realtime:candidates', textContent) === true || */) {
-              continue;
-            }
-
             const date = node.querySelector(selectors.date)?.textContent;
 
             if (typeof date !== 'string') {
@@ -122,6 +117,11 @@ const gatherUrls = async () => {
               id = result.decoded_url;
             } else {
               id = textContent;
+            }
+
+            if (await redis.EXISTS(`realtime:article:${id}`) > 0 /*||
+                /* await redis.HEXISTS('realtime:candidates', id) === true || */) {
+              continue;
             }
 
             const map: { source: string, timestamp: number } = {
