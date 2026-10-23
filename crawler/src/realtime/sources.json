@@ -392,11 +392,11 @@
     "url": "https://news.tvbs.com.tw",
     "xmls": [
       {
-        "url": "https://news.google.com/rss/search?q=site:news.tvbs.com.tw+when:12h&hl=zh-TW&gl=TW&ceid=TW:zh-Hant",
+        "url": "https://news.tvbs.com.tw/sitemap/news-sitemap",
         "selectors": {
-          "root": "item",
-          "url": "link",
-          "date": "pubDate"
+          "root": "url",
+          "url": "loc",
+          "date": "publication_date"
         },
         "pathnamePrefixes": [
           "/"
