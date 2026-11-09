@@ -63,7 +63,7 @@
     "name": "紅豆食府 SOGO 天母店",
     "latitude": 25.105124445612475,
     "longitude": 121.52409943263372,
-    "description": "生菜蝦鬆\n\n東坡肉 + 刈包\n\n醃篤鮮\n\n炸銀絲捲"
+    "description": "生菜蝦鬆\n\n東坡肉 + 刈包\n\n醃篤鮮\n\n炸銀絲捲\n\n8F"
   },
   {
     "name": "丰園小館",
@@ -151,7 +151,7 @@
   },
   {
     "name": "極之好味 港仔記 林口店",
-    "description": "明爐燒鴨",
+    "description": "明爐燒鴨\n\n林口三井 Outlet 二館 3 樓",
     "latitude": 25.068833239418346,
     "longitude": 121.36472715844292
   },
@@ -1758,6 +1758,12 @@
     "description": "腰內豬排\n\n豬排丼\n\n味噌湯\n\n波菜"
   },
   {
+    "name": "給力盒子 南陽店",
+    "latitude": 25.0447565469223,
+    "longitude": 121.51679263437592,
+    "description": "椒鹽水煮雞胸 全菜"
+  },
+  {
     "name": "新高軒 創始店",
     "latitude": 25.044658500000946,
     "longitude": 121.54430685868863,
@@ -2037,7 +2043,7 @@
     "name": "NARA 台北忠孝 SOGO 店",
     "latitude": 25.042032023785755,
     "longitude": 121.5446910835191,
-    "description": "松阪豬\n\n金錢蝦餅"
+    "description": "松阪豬\n\n金錢蝦餅\n\n11F"
   },
   {
     "name": "種福園 懷寧本店",
@@ -2097,7 +2103,7 @@
     "name": "季樂和牛鐵板燒 遠東 SOGO 忠孝館",
     "latitude": 25.041659,
     "longitude": 121.543202,
-    "description": "A5 和牛鐵板吐司\n\n雞腿鐵板吐司\n\n龍蝦"
+    "description": "A5 和牛鐵板吐司\n\n雞腿鐵板吐司\n\n龍蝦\n\nB1"
   },
   {
     "name": "一風堂 台北大巨蛋店",
@@ -2146,6 +2152,12 @@
     "latitude": 25.041098976798022,
     "longitude": 121.53145180066515,
     "description": "沙朗牛排 附 高麗菜 湯 自取"
+  },
+  {
+    "name": "鰻將劍持屋",
+    "latitude": 25.040890769902422,
+    "longitude": 121.54324142668078,
+    "description": "鰻魚飯\n\nSOGO 復興館 B2"
   },
   {
     "name": "北村豆腐家 統一時代台北店",
@@ -2523,7 +2535,7 @@
     "name": "東京純豆腐 新竹 SOGO 店",
     "latitude": 24.809631274141395,
     "longitude": 120.97586046991967,
-    "description": "蕃茄牛肉起士純豆腐 白湯\n\n海鮮煎餅"
+    "description": "蕃茄牛肉起士純豆腐 白湯\n\n海鮮煎餅\n\nB1"
   },
   {
     "name": "關西仙草巷",
